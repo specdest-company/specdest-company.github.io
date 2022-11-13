@@ -1,0 +1,15 @@
+.service-text-container {
+  display: flex;
+  position: relative;
+}
+.service-text-text {
+  color: rgb(32, 32, 32);
+  width: 65%;
+  font-size: 1.15rem;
+  text-align: center;
+}
+@media(max-width: 991px) {
+  .service-text-text {
+    text-align: center;
+  }
+}
