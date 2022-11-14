@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './footer.css'
 
@@ -7,11 +8,13 @@ const Footer = (props) => {
     <footer className="footer-footer section-container">
       <div className="footer-max-width max-content-container">
         <div className="footer-container">
-          <img
-            alt="image"
-            src="/playground_assets/screen%20shot%202022-11-07%20at%2021.08.59-200h.png"
-            className="footer-image"
-          />
+          <Link to="/" className="footer-navlink">
+            <img
+              alt="image"
+              src="/playground_assets/screen%20shot%202022-11-07%20at%2021.08.59-200h.png"
+              className="footer-image"
+            />
+          </Link>
           <div className="footer-container1">
             <span className="footer-text">
               <span>
@@ -55,10 +58,18 @@ const Footer = (props) => {
         <div className="footer-links">
           <span className="footer-text09">Company</span>
           <div className="footer-container3">
-            <span>Home</span>
-            <span>Services</span>
-            <span>Technology</span>
-            <span>Contact</span>
+            <a href="https://specdest.com/#top" className="footer-link">
+              Home
+            </a>
+            <a href="https://specdest.com/#services" className="footer-link1">
+              Services
+            </a>
+            <a href="https://specdest.com/#technology" className="footer-link2">
+              Technology
+            </a>
+            <Link to="/contact" className="footer-navlink1">
+              Contact
+            </Link>
           </div>
         </div>
       </div>

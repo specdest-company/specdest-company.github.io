@@ -8,8 +8,8 @@ const FeatureCardServer = (props) => {
   return (
     <div className={`feature-card-server-feature-card ${props.rootClassName} `}>
       <img
-        alt={props.image_alt1}
         src={props.image_src1}
+        alt="Database"
         className="feature-card-server-image"
       />
       <h2 className="feature-card-server-text">{props.title}</h2>
@@ -19,16 +19,14 @@ const FeatureCardServer = (props) => {
 }
 
 FeatureCardServer.defaultProps = {
-  image_alt1: 'Database',
   rootClassName: '',
-  image_src1: '/playground_assets/database_logos-200h.webp',
+  image_src1: '/playground_assets/2_1-200h.png',
   title: 'Servers',
   description:
     'SQL database is a collection of highly structured tables containing rows that reflect a data entity and columns that define a specific information field. Relational databases are built using the structured query language to create, store, update, and retrieve data. We aim to use the relational database management systems (RDBMS) such as MySQL, Oracle, and PostgreSQL in our software development services.',
 }
 
 FeatureCardServer.propTypes = {
-  image_alt1: PropTypes.string,
   rootClassName: PropTypes.string,
   image_src1: PropTypes.string,
   title: PropTypes.string,

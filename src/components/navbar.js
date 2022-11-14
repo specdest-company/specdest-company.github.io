@@ -12,11 +12,9 @@ const Navbar = (props) => {
         data-role="Header"
         className="navbar-max-width max-content-container"
       >
-        <img
-          alt={props.image_alt}
-          src={props.image_src}
-          className="navbar-image"
-        />
+        <a href="https://specdest.com/#top" className="navbar-link">
+          <img src={props.image_src} alt="logo" className="navbar-image" />
+        </a>
         <div
           data-role="BurgerMenu"
           className="navigation-burger-menu navbar-burger-menu"
@@ -35,8 +33,8 @@ const Navbar = (props) => {
           <div className="navbar-nav">
             <div className="navbar-container">
               <img
-                alt={props.image_alt1}
                 src={props.image_src1}
+                alt="image"
                 className="navbar-image1"
               />
               <div data-role="CloseMobileMenu" className="navbar-menu-close">
@@ -112,9 +110,7 @@ Navbar.defaultProps = {
   image_src:
     '/playground_assets/screen%20shot%202022-11-07%20at%2021.08.59-1200w.png',
   image_src1: 'https://play.teleporthq.io/static/svg/placeholders/no-image.svg',
-  image_alt: 'logo',
   rootClassName: '',
-  image_alt1: 'image',
   text: 'Follow us',
   PrimaryBtn1: 'Get started',
 }
@@ -122,9 +118,7 @@ Navbar.defaultProps = {
 Navbar.propTypes = {
   image_src: PropTypes.string,
   image_src1: PropTypes.string,
-  image_alt: PropTypes.string,
   rootClassName: PropTypes.string,
-  image_alt1: PropTypes.string,
   text: PropTypes.string,
   PrimaryBtn1: PropTypes.string,
 }

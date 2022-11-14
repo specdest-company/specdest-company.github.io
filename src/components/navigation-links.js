@@ -7,10 +7,38 @@ import './navigation-links.css'
 const NavigationLinks = (props) => {
   return (
     <nav className={`navigation-links-nav ${props.rootClassName} `}>
-      <span className="navigation-links-text navbar-link">{props.text}</span>
-      <span className="navigation-links-text1 navbar-link">{props.text1}</span>
-      <span className="navigation-links-text2 navbar-link">{props.text2}</span>
-      <span className="navigation-links-text3 navbar-link">{props.text3}</span>
+      <div className="navigation-links-container">
+        <a
+          href="https://specdest.com/#consulting"
+          className="navigation-links-link navbar-link"
+        >
+          {props.text}
+        </a>
+      </div>
+      <div className="navigation-links-container1">
+        <a
+          href="https://specdest.com/#software-development"
+          className="navigation-links-link1 navbar-link"
+        >
+          {props.text1}
+        </a>
+      </div>
+      <div className="navigation-links-container2">
+        <a
+          href="https://specdest.com/#test-automation"
+          className="navigation-links-link2 navbar-link"
+        >
+          {props.text2}
+        </a>
+      </div>
+      <div className="navigation-links-container3">
+        <a
+          href="https://specdest.com/#technology"
+          className="navigation-links-link3 navbar-link"
+        >
+          {props.text3}
+        </a>
+      </div>
     </nav>
   )
 }

@@ -15,9 +15,13 @@
   width: 100%;
   display: flex;
 }
+.footer-navlink {
+  display: contents;
+}
 .footer-image {
   width: 106px;
   margin-right: 16px;
+  text-decoration: none;
 }
 .footer-container1 {
   flex: 1;
@@ -107,6 +111,18 @@
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
+}
+.footer-link {
+  text-decoration: none;
+}
+.footer-link1 {
+  text-decoration: none;
+}
+.footer-link2 {
+  text-decoration: none;
+}
+.footer-navlink1 {
+  text-decoration: none;
 }
 @media(max-width: 991px) {
   .footer-container1 {
