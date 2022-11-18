@@ -8,8 +8,8 @@ const FeatureCardServer = (props) => {
   return (
     <div className={`feature-card-server-feature-card ${props.rootClassName} `}>
       <img
-        src={props.image_src1}
         alt="Database"
+        src={props.image_src1}
         className="feature-card-server-image"
       />
       <h2 className="feature-card-server-text">{props.title}</h2>

@@ -19,7 +19,6 @@
 }
 .labeled-text-aria-input-required {
   color: var(--dl-color-backgrounds-red);
-  display: none;
   align-self: center;
   font-style: normal;
   font-weight: 700;
@@ -27,4 +26,8 @@
 .labeled-text-aria-input-textarea {
   padding: var(--dl-space-space-unit);
   font-size: 24px;
+}
+
+.labeled-text-aria-error {
+  color: var(--dl-color-backgrounds-red);
 }

@@ -28,3 +28,6 @@
   padding: var(--dl-space-space-unit);
   font-size: 24px;
 }
+.labeled-test-error {
+  color: var(--dl-color-backgrounds-red);
+}

@@ -268,16 +268,16 @@ const Home = (props) => {
             </h1>
             <div className="home-container4">
               <FeatureCardLanguage
-                rootClassName="feature-card-language-root-class-name2"
                 image_src1="/playground_assets/3_1-200h.png"
+                rootClassName="feature-card-language-root-class-name2"
               ></FeatureCardLanguage>
               <FeatureCardServer
-                rootClassName="feature-card-server-root-class-name"
                 image_src1="/playground_assets/2_1-200h.png"
+                rootClassName="feature-card-server-root-class-name"
               ></FeatureCardServer>
               <FeatureCardFramework1
-                rootClassName="feature-card-framework1-root-class-name"
                 image_src1="/playground_assets/1_1-200h.png"
+                rootClassName="feature-card-framework1-root-class-name"
               ></FeatureCardFramework1>
             </div>
           </div>

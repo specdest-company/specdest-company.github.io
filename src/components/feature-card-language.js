@@ -10,8 +10,8 @@ const FeatureCardLanguage = (props) => {
       className={`feature-card-language-feature-card ${props.rootClassName} `}
     >
       <img
-        src={props.image_src1}
         alt="image"
+        src={props.image_src1}
         className="feature-card-language-image"
       />
       <h2 className="feature-card-language-text">{props.title}</h2>

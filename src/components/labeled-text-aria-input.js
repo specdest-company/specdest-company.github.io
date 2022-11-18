@@ -11,31 +11,39 @@ const LabeledTextAriaInput = (props) => {
         <label htmlFor="textArea" className="labeled-text-aria-input-label">
           {props.Label}
         </label>
-        <label htmlFor="input" className="labeled-text-aria-input-required">
+        {props.isRequired && (<label htmlFor="input" className="labeled-text-aria-input-required">
           必須
-        </label>
+        </label>)}
       </div>
       <textarea
+        value={props.value}
+        onChange={props.onChange}
+        name={props.name}
         id="textArea"
         rows="6"
         placeholder={props.textarea_placeholder}
         className="labeled-text-aria-input-textarea textarea"
       ></textarea>
+      {props.errorString ? <span className='labeled-text-aria-error'>{props.errorString}</span> : null}
     </div>
   )
 }
 
 LabeledTextAriaInput.defaultProps = {
-  required: '必須',
+  isRequired: false,
   textarea_placeholder:
     '聞きたいことや、電話発信について相談したいことをご入力ください。',
   Label: 'お問い合わせ内容',
 }
 
 LabeledTextAriaInput.propTypes = {
-  required: PropTypes.string,
+  isRequired: PropTypes.bool,
   textarea_placeholder: PropTypes.string,
   Label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  errorString: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default LabeledTextAriaInput

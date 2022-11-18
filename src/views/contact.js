@@ -1,16 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
 import Navbar from '../components/navbar'
 import LabeledTextInput from '../components/labeled-text-input'
-import PhoneInput from '../components/phone-input'
-import EmailLabeledTextinput from '../components/email-labeled-textinput'
 import LabeledTextAriaInput from '../components/labeled-text-aria-input'
 import Footer from '../components/footer'
 import './contact.css'
 
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 const Contact = (props) => {
+  const [state, steState] = useState({
+    error: {},
+    data: {}
+  })
+
+  const handleChange = (e) => {
+    console.log("changed : ", e.target.name)
+    steState({
+      data: {
+        ...state.data,
+        [e.target.name]: e.target.value
+      },
+      error: {
+        ...state.error,
+        [e.target.name]: null
+      }
+    })
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('form values', state, validateEmail(state.data.emailAddress));
+    if (!state.data.emailAddress || !validateEmail(state.data.emailAddress)) {
+      steState((prev) => ({
+        ...prev,
+        error: {
+          ...prev.error,
+          emailAddress: "メールアドレスを入力してください"
+        }
+      }))
+    }
+    if (!state.data.message) {
+      steState((prev) => ({
+        ...prev,
+        error: {
+          ...prev.error,
+          message: "お問い合わせ内容を入力してください"
+        }
+      }))
+    }
+    if (state.error.email || state.error.message) {
+      return
+    }
+    console.log("send to ", process.env.REACT_APP_EMAIL_ENDPOIT_URL)
+  }
   return (
     <div className="contact-container">
       <Helmet>
@@ -18,7 +68,7 @@ const Contact = (props) => {
         <meta property="og:title" content="Contact - SPECDEST" />
       </Helmet>
       <Navbar></Navbar>
-      <div className="contact-container1">
+      <div className="contact-container1 max-content-container">
         <div className="contact-container2">
           <h1 className="contact-text">
             <span>情報をご入力の上、</span>
@@ -30,27 +80,66 @@ const Contact = (props) => {
           <h1>お問い合わせフォーム</h1>
         </div>
         <div className="contact-container4">
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={handleSubmit}>
             <LabeledTextInput
+              value={state.companyName}
+              onChange={handleChange}
+              name="companyName"
+              value={state.companyName}
               text="会社名"
               textinput_placeholder="例）スペックデストカビ式会社式会社"
             ></LabeledTextInput>
             <LabeledTextInput
+              value={state.companyUrl}
+              onChange={handleChange}
+              name="companyUrl"
+              value={state.companyUrl}
               text="会社URL"
               textinput_placeholder="例）https://specdest.com"
             ></LabeledTextInput>
             <LabeledTextInput
+              value={state.department}
+              onChange={handleChange}
+              name="department"
+              value={state.department}
               text="役職（部署）"
               textinput_placeholder="例）営業部 部長"
             ></LabeledTextInput>
             <LabeledTextInput
+              value={state.customerName}
+              onChange={handleChange}
+              name="customerName"
+              value={state.customerName}
               text="お名前"
               textinput_placeholder="例）山田 太郎"
             ></LabeledTextInput>
-            <PhoneInput></PhoneInput>
-            <EmailLabeledTextinput></EmailLabeledTextinput>
-            <LabeledTextAriaInput></LabeledTextAriaInput>
-            <button className="contact-button button">送信する</button>
+            <LabeledTextInput
+              value={state.phone}
+              onChange={handleChange}
+              name="phone"
+              value={state.phone}
+              text="電話番号"
+              textinput_placeholder="例）000-1234-5678"
+            ></LabeledTextInput>
+            <LabeledTextInput
+              value={state.emailAddress}
+              onChange={handleChange}
+              name="emailAddress"
+              errorString={state.error && state.error.emailAddress}
+              isRequired
+              value={state.emailAddress}
+              text="メールアドレス"
+              textinput_placeholder="例）info@specdest.com"
+            ></LabeledTextInput>
+            <LabeledTextAriaInput
+              value={state.message}
+              onChange={handleChange}
+              isRequired
+              errorString={state.error && state.error.message}
+              name="message"
+              value={state.message}
+            ></LabeledTextAriaInput>
+            <button className="contact-button button" type="submit" value="Submit">送信する</button>
           </form>
           <h1 className="contact-text05">個人情報の取り扱いについて</h1>
           <span className="contact-text06">

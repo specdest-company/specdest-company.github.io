@@ -13,7 +13,7 @@ const Navbar = (props) => {
         className="navbar-max-width max-content-container"
       >
         <a href="https://specdest.com/#top" className="navbar-link">
-          <img src={props.image_src} alt="logo" className="navbar-image" />
+          <img alt="logo" src={props.image_src} className="navbar-image" />
         </a>
         <div
           data-role="BurgerMenu"
@@ -33,8 +33,8 @@ const Navbar = (props) => {
           <div className="navbar-nav">
             <div className="navbar-container">
               <img
-                src={props.image_src1}
                 alt="image"
+                src={props.image_src1}
                 className="navbar-image1"
               />
               <div data-role="CloseMobileMenu" className="navbar-menu-close">
