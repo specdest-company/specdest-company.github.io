@@ -58,6 +58,9 @@
   align-self: center;
   flex-direction: column;
 }
+.contact-recapcha {
+  align-self: center;
+}
 .contact-button {
   color: var(--dl-color-grays-white100);
   font-size: 24px;

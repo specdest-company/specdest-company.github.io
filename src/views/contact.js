@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import ReactRecaptcha3 from 'react-google-recaptcha3';
 
 import { Helmet } from 'react-helmet'
-
+import { useNavigate } from "react-router-dom";
 import Navbar from '../components/navbar'
 import LabeledTextInput from '../components/labeled-text-input'
 import LabeledTextAriaInput from '../components/labeled-text-aria-input'
 import Footer from '../components/footer'
+import { sendEmail } from '../utils/sendEmail'
 import './contact.css'
 
 const validateEmail = (email) => {
@@ -22,8 +24,16 @@ const Contact = (props) => {
     data: {}
   })
 
+  const navigate = useNavigate();
+  // load google recaptcha3 script
+  useEffect(() => {
+    ReactRecaptcha3.init(process.env.REACT_APP_RECAPCHA_SITE_KEY).then(
+      (status) => {
+        console.log(status);
+      }
+    );
+  }, [])
   const handleChange = (e) => {
-    console.log("changed : ", e.target.name)
     steState({
       data: {
         ...state.data,
@@ -35,15 +45,24 @@ const Contact = (props) => {
       }
     })
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('form values', state, validateEmail(state.data.emailAddress));
+    const recapchaToken = await ReactRecaptcha3.getToken()
     if (!state.data.emailAddress || !validateEmail(state.data.emailAddress)) {
       steState((prev) => ({
         ...prev,
         error: {
           ...prev.error,
           emailAddress: "メールアドレスを入力してください"
+        }
+      }))
+    }
+    if (!state.data.customerName) {
+      steState((prev) => ({
+        ...prev,
+        error: {
+          ...prev.error,
+          customerName: "お名前を入力してください"
         }
       }))
     }
@@ -56,10 +75,15 @@ const Contact = (props) => {
         }
       }))
     }
-    if (state.error.email || state.error.message) {
+    if (state.error.email || state.error.message || state.error.customerName) {
       return
     }
-    console.log("send to ", process.env.REACT_APP_EMAIL_ENDPOIT_URL)
+    await sendEmail({
+      ...state.data,
+      recapchaToken
+    })
+    ReactRecaptcha3.destroy();
+    navigate("/contact-sent");
   }
   return (
     <div className="contact-container">
@@ -109,6 +133,7 @@ const Contact = (props) => {
               value={state.customerName}
               onChange={handleChange}
               name="customerName"
+              isRequired
               value={state.customerName}
               text="お名前"
               textinput_placeholder="例）山田 太郎"
@@ -139,6 +164,12 @@ const Contact = (props) => {
               name="message"
               value={state.message}
             ></LabeledTextAriaInput>
+
+            <div
+              className="g-recaptcha"
+              data-sitekey={process.env.REACT_APP_RECAPCHA_SITE_KEY}
+              data-size="invisible"
+            ></div>
             <button className="contact-button button" type="submit" value="Submit">送信する</button>
           </form>
           <h1 className="contact-text05">個人情報の取り扱いについて</h1>
