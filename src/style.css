@@ -1,3 +1,7 @@
+body {
+  background-color: #111727
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&display=swap');
 :root {
   --dl-size-size-large: 144px;
   --dl-size-size-small: 48px;
