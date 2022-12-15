@@ -10,6 +10,7 @@ import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
+  useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Text, View } from "@aws-amplify/ui-react";
 export default function ContactUsButton(props) {
@@ -38,6 +39,10 @@ export default function ContactUsButton(props) {
     getOverridesFromVariants(variants, props),
     overridesProp || {}
   );
+  const contactUsButtonOnClick = useNavigateAction({
+    type: "url",
+    url: '"/contact"',
+  });
   return (
     <View
       width="234px"
@@ -48,6 +53,9 @@ export default function ContactUsButton(props) {
       justifyContent="unset"
       position="relative"
       padding="0px 0px 0px 0px"
+      onClick={() => {
+        contactUsButtonOnClick();
+      }}
       {...rest}
       {...getOverrideProps(overrides, "ContactUsButton")}
     >

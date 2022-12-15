@@ -52,7 +52,7 @@ export default function TopPage(props) {
         Automation: { breakpoint: "medium" },
         OurTechnology: { breakpoint: "medium" },
         JoinUs: {},
-        Footer: {},
+        Footer: { breakpoint: "medium" },
         TopPage: {},
       },
       variantValues: { breakpoint: "medium" },
@@ -97,6 +97,7 @@ export default function TopPage(props) {
         position="relative"
         padding="24px 32px 24px 32px"
         breakpoint="base"
+        id="top"
         {...getOverrideProps(overrides, "TopNavBar")}
       ></TopNavBar>
       <Hero
@@ -142,6 +143,7 @@ export default function TopPage(props) {
         position="relative"
         padding="35px 32px 35px 32px"
         breakpoint="base"
+        id="services"
         {...getOverrideProps(overrides, "Services")}
       ></Services>
       <Development
@@ -157,6 +159,7 @@ export default function TopPage(props) {
         position="relative"
         padding="32px 32px 32px 32px"
         breakpoint="base"
+        id="development"
         {...getOverrideProps(overrides, "Development")}
       ></Development>
       <Consulting
@@ -172,6 +175,7 @@ export default function TopPage(props) {
         position="relative"
         padding="39px 32px 39px 32px"
         breakpoint="base"
+        id="consulting"
         {...getOverrideProps(overrides, "Consulting")}
       ></Consulting>
       <Automation
@@ -187,6 +191,7 @@ export default function TopPage(props) {
         position="relative"
         padding="39px 32px 39px 32px"
         breakpoint="base"
+        id="automation"
         {...getOverrideProps(overrides, "Automation")}
       ></Automation>
       <OurTechnology
@@ -222,10 +227,10 @@ export default function TopPage(props) {
       <Footer
         display="flex"
         gap="30px"
-        direction="row"
+        direction="column"
         width="unset"
         height="unset"
-        justifyContent="space-between"
+        justifyContent="flex-start"
         alignItems="center"
         shrink="0"
         alignSelf="stretch"

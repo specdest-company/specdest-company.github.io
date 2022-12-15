@@ -31,7 +31,14 @@ export default function Development(props) {
     },
     {
       overrides: {
-        SideImage: { height: "unset", shrink: "1", grow: "1", basis: "0" },
+        SideImage: {
+          width: "unset",
+          height: "unset",
+          shrink: "1",
+          grow: "1",
+          basis: "0",
+          alignSelf: "stretch",
+        },
         "\u30AB\u30B9\u30BF\u30E0\u30BD\u30EA\u30E5\u30FC\u30B7\u30E7\u30F3": {
           textAlign: "left",
         },
@@ -74,12 +81,11 @@ export default function Development(props) {
         display="flex"
         gap="10px"
         direction="column"
-        width="unset"
+        width="200px"
         height="200px"
         justifyContent="center"
         alignItems="center"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         imageType="development"

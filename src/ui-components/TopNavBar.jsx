@@ -10,6 +10,7 @@ import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
+  useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
 import {
   Flex,
@@ -20,16 +21,16 @@ import {
 } from "@aws-amplify/ui-react";
 import Logo from "./Logo";
 export default function TopNavBar(props) {
-  const { overrides: overridesProp, ...restProp } = props;
+  const { onHamburgerClick, overrides: overridesProp, ...restProp } = props;
   const variants = [
     {
       overrides: {
         Logo: {},
         Vector: {},
         "ci:hamburger": {},
-        "IT \u30B3\u30F3\u30B5\u30EB\u30C6\u30A3\u30F3\u30B0": {},
-        "\u30B7\u30B9\u30C6\u30E0\u958B\u767A": {},
-        "\u81EA\u52D5\u5316": {},
+        consulting: {},
+        developoment: {},
+        automation: {},
         "\u6280\u8853": {},
         "Frame 321": {},
         TopNavBar: {},
@@ -41,9 +42,9 @@ export default function TopNavBar(props) {
         Logo: {},
         Vector: {},
         "ci:hamburger": { display: "none" },
-        "IT \u30B3\u30F3\u30B5\u30EB\u30C6\u30A3\u30F3\u30B0": {},
-        "\u30B7\u30B9\u30C6\u30E0\u958B\u767A": {},
-        "\u81EA\u52D5\u5316": {},
+        consulting: {},
+        developoment: {},
+        automation: {},
         "\u6280\u8853": {},
         "Frame 321": { display: "flex" },
         TopNavBar: {},
@@ -63,6 +64,18 @@ export default function TopNavBar(props) {
     }),
     overridesProp || {}
   );
+  const consultingOnClick = useNavigateAction({
+    anchor: "consulting",
+    type: "anchor",
+  });
+  const developomentOnClick = useNavigateAction({
+    anchor: "development",
+    type: "anchor",
+  });
+  const automationOnClick = useNavigateAction({
+    anchor: "automation",
+    type: "anchor",
+  });
   return (
     <Flex
       gap="20px"
@@ -101,6 +114,7 @@ export default function TopNavBar(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
+        onClick={onHamburgerClick}
         {...getOverrideProps(overrides, "ci:hamburger")}
       >
         <Icon
@@ -159,10 +173,10 @@ export default function TopNavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="IT コンサルティング"
-          {...getOverrideProps(
-            overrides,
-            "IT \u30B3\u30F3\u30B5\u30EB\u30C6\u30A3\u30F3\u30B0"
-          )}
+          onClick={() => {
+            consultingOnClick();
+          }}
+          {...getOverrideProps(overrides, "consulting")}
         ></Text>
         <Text
           fontFamily="Inter"
@@ -184,10 +198,10 @@ export default function TopNavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="システム開発"
-          {...getOverrideProps(
-            overrides,
-            "\u30B7\u30B9\u30C6\u30E0\u958B\u767A"
-          )}
+          onClick={() => {
+            developomentOnClick();
+          }}
+          {...getOverrideProps(overrides, "developoment")}
         ></Text>
         <Text
           fontFamily="Inter"
@@ -209,7 +223,10 @@ export default function TopNavBar(props) {
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="自動化"
-          {...getOverrideProps(overrides, "\u81EA\u52D5\u5316")}
+          onClick={() => {
+            automationOnClick();
+          }}
+          {...getOverrideProps(overrides, "automation")}
         ></Text>
         <Text
           fontFamily="Inter"
@@ -218,7 +235,7 @@ export default function TopNavBar(props) {
           color="rgba(255,255,255,1)"
           lineHeight="24px"
           textAlign="left"
-          display="block"
+          display="none"
           direction="column"
           justifyContent="unset"
           letterSpacing="0.01px"

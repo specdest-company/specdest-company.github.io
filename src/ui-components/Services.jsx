@@ -82,7 +82,7 @@ export default function Services(props) {
     >
       <Flex
         padding="0px 0px 0px 0px"
-        width="451px"
+        width="447.5px"
         height="110px"
         display="block"
         gap="unset"
@@ -109,7 +109,7 @@ export default function Services(props) {
           alignItems="unset"
           position="absolute"
           top="0px"
-          left="51px"
+          left="47.5px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="                                                   and we will make them into reality"

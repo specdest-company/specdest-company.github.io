@@ -12,7 +12,7 @@ import { Amplify } from 'aws-amplify';
 
 import awsconfig from '../aws-exports';
 
-import "@aws-amplify/ui-react/styles.css";
+// import "@aws-amplify/ui-react/styles.css";
 import { studioTheme } from "../ui-components";
 
 Amplify.configure(awsconfig);
@@ -42,7 +42,11 @@ export default (props) => {
   }}>
     {/* <ThemeProvider theme={studioTheme}> */}
 
-    <TopPage width="100%" />
+    <TopPage width="100%" overrides={{
+      Services: {
+        id: "services"
+      },
+    }} />
     {/* <Comp1 width="100%" /> */}
     {/* <TopNavBar width="100%" /> */}
     {/* <Hero width="100%" overrides={{

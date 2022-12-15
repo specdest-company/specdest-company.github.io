@@ -6,8 +6,12 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ViewProps } from "@aws-amplify/ui-react";
-export declare type TableCellProps = React.PropsWithChildren<Partial<ViewProps> & {
+import { FlexProps } from "@aws-amplify/ui-react";
+export declare type ContactUsProps = React.PropsWithChildren<Partial<FlexProps> & {
+    form?: React.ReactNode;
+} & {
+    breakpoint?: "base" | "medium";
+} & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function TableCell(props: TableCellProps): React.ReactElement;
+export default function ContactUs(props: ContactUsProps): React.ReactElement;

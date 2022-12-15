@@ -8,6 +8,8 @@ import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type RecruitContentProps = React.PropsWithChildren<Partial<FlexProps> & {
+    breakpoint?: "base" | "medium";
+} & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
 export default function RecruitContent(props: RecruitContentProps): React.ReactElement;

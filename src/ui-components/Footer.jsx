@@ -10,15 +10,16 @@ import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
+  useNavigateAction,
 } from "@aws-amplify/ui-react/internal";
-import { Flex, Image, Text, useBreakpointValue } from "@aws-amplify/ui-react";
+import { Flex, Text, useBreakpointValue } from "@aws-amplify/ui-react";
+import Logo from "./Logo";
 export default function Footer(props) {
   const { overrides: overridesProp, ...restProp } = props;
   const variants = [
     {
       overrides: {
-        "screen shot 2022-11-07 at 21.08 1": {},
-        "logo specdest white 1": {},
+        Logo: {},
         "\u3012106-0031, \u6771\u4EAC\u90FD\u6E2F\u533A4-11-2, 606 Tel: 080-8495-6224":
           {},
         "Frame 6": {},
@@ -35,8 +36,7 @@ export default function Footer(props) {
     },
     {
       overrides: {
-        "screen shot 2022-11-07 at 21.08 1": {},
-        "logo specdest white 1": {},
+        Logo: {},
         "\u3012106-0031, \u6771\u4EAC\u90FD\u6E2F\u533A4-11-2, 606 Tel: 080-8495-6224":
           {},
         "Frame 6": {},
@@ -47,7 +47,7 @@ export default function Footer(props) {
         Contact: {},
         "Frame 7": {},
         "Frame 5": {},
-        Footer: {},
+        Footer: { direction: "row", justifyContent: "space-between" },
       },
       variantValues: { breakpoint: "medium" },
     },
@@ -64,13 +64,19 @@ export default function Footer(props) {
     }),
     overridesProp || {}
   );
+  const homeOnClick = useNavigateAction({ anchor: "top", type: "anchor" });
+  const serviceOnClick = useNavigateAction({
+    anchor: "service",
+    type: "anchor",
+  });
+  const contactOnClick = useNavigateAction({ type: "url", url: "/contact" });
   return (
     <Flex
       gap="30px"
-      direction="row"
+      direction="column"
       width="980px"
       height="unset"
-      justifyContent="space-between"
+      justifyContent="flex-start"
       alignItems="center"
       position="relative"
       padding="32px 32px 32px 32px"
@@ -91,32 +97,19 @@ export default function Footer(props) {
         display="flex"
         {...getOverrideProps(overrides, "Frame 6")}
       >
-        <Image
-          width="64px"
-          height="64px"
-          display="none"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          objectFit="cover"
-          {...getOverrideProps(overrides, "screen shot 2022-11-07 at 21.08 1")}
-        ></Image>
-        <Image
+        <Logo
           width="48px"
           height="48px"
           display="block"
           gap="unset"
           alignItems="unset"
           justifyContent="unset"
+          overflow="hidden"
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          objectFit="cover"
-          {...getOverrideProps(overrides, "logo specdest white 1")}
-        ></Image>
+          {...getOverrideProps(overrides, "Logo")}
+        ></Logo>
         <Text
           fontFamily="Inter"
           fontSize="12px"
@@ -211,6 +204,9 @@ export default function Footer(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Home"
+            onClick={() => {
+              homeOnClick();
+            }}
             {...getOverrideProps(overrides, "Home")}
           ></Text>
           <Text
@@ -233,6 +229,9 @@ export default function Footer(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Service"
+            onClick={() => {
+              serviceOnClick();
+            }}
             {...getOverrideProps(overrides, "Service")}
           ></Text>
           <Text
@@ -242,7 +241,7 @@ export default function Footer(props) {
             color="rgba(255,255,255,1)"
             lineHeight="15.5px"
             textAlign="left"
-            display="block"
+            display="none"
             direction="column"
             justifyContent="unset"
             letterSpacing="0px"
@@ -277,6 +276,9 @@ export default function Footer(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Contact"
+            onClick={() => {
+              contactOnClick();
+            }}
             {...getOverrideProps(overrides, "Contact")}
           ></Text>
         </Flex>

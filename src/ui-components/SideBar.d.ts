@@ -7,7 +7,7 @@
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type SideBarProps = React.PropsWithChildren<Partial<FlexProps> & {
+export declare type SidebarProps = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function SideBar(props: SideBarProps): React.ReactElement;
+export default function Sidebar(props: SidebarProps): React.ReactElement;

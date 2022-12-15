@@ -7,7 +7,10 @@
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
+import { SyntheticEvent } from "react";
 export declare type TopNavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
+    onHamburgerClick?: (event: SyntheticEvent) => void;
+} & {
     breakpoint?: "base" | "medium";
 } & {
     overrides?: EscapeHatchProps | undefined | null;
