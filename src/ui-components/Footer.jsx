@@ -66,7 +66,7 @@ export default function Footer(props) {
   );
   const homeOnClick = useNavigateAction({ anchor: "top", type: "anchor" });
   const serviceOnClick = useNavigateAction({
-    anchor: "service",
+    anchor: "services",
     type: "anchor",
   });
   const contactOnClick = useNavigateAction({ type: "url", url: "/contact" });

@@ -10,7 +10,7 @@ import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import Logo from "./Logo";
 import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function Sidebar(props) {
-  const { overrides, ...rest } = props;
+  const { onCloseClick, overrides, ...rest } = props;
   return (
     <Flex
       gap="21px"
@@ -63,6 +63,7 @@ export default function Sidebar(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
+          onClick={onCloseClick}
           {...getOverrideProps(overrides, "material-symbols:close")}
         >
           <Icon
