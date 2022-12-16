@@ -20,16 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <TopPage
-            width="100%"
-            overrides={{
-              Services: {
-                id: 'services',
-              },
-            }}
-          />
-        ),
+        element: <TopPage />,
       },
       {
         path: '/contact',

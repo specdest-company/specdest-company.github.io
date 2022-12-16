@@ -1,4 +1,4 @@
-import "./contact.css"
+import './contact.css';
 import { useEffect } from 'react';
 import { ContactUs, ContactUsForm } from '../ui-components';
 import { ContactUsFormInputValues } from '../ui-components/ContactUsForm';
@@ -14,8 +14,8 @@ const ContactPage = () => {
   const onSubmit = (fields: ContactUsFormInputValues) => {
     // Example function to trim all string inputs
     const updatedFields: ContactUsFormInputValues = {};
-    (Object.keys(fields)  as Array<keyof typeof fields> ).forEach((key) => {
-      const value = fields[key]
+    (Object.keys(fields) as Array<keyof typeof fields>).forEach((key) => {
+      const value = fields[key];
       if (typeof value === 'string') {
         updatedFields[key] = value.trim();
       } else {
@@ -28,9 +28,9 @@ const ContactPage = () => {
       // return updatedFields
       await sendEmail({
         recapchaToken: token,
-        customerName: updatedFields.name || "",
-        emailAddress: updatedFields.email || "",
-        message: updatedFields.detail || "",
+        customerName: updatedFields.name || '',
+        emailAddress: updatedFields.email || '',
+        message: updatedFields.detail || '',
         companyName: updatedFields.companyName,
         companyUrl: updatedFields.companyUrl,
         department: updatedFields.department,
@@ -62,4 +62,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage
+export default ContactPage;
