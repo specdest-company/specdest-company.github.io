@@ -17,15 +17,15 @@ export default function SideImage(props) {
   const variants = [
     {
       overrides: { image: {}, SideImage: {} },
-      variantValues: { imageType: "development" },
+      variantValues: { imageName: "development" },
     },
     {
       overrides: { image: {}, SideImage: {} },
-      variantValues: { imageType: "consulting" },
+      variantValues: { imageName: "consulting" },
     },
     {
       overrides: { image: {}, SideImage: {} },
-      variantValues: { imageType: "automation" },
+      variantValues: { imageName: "automation" },
     },
   ];
   const overrides = mergeVariantsAndOverrides(
@@ -60,7 +60,7 @@ export default function SideImage(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="contain"
-        src="/assets/images/2.png"
+        src=""
         {...getOverrideProps(overrides, "image")}
       ></Image>
     </Flex>

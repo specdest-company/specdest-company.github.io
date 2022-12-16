@@ -88,7 +88,7 @@ export default function Development(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        imageType="development"
+        imageName="development"
         {...getOverrideProps(overrides, "SideImage")}
       ></SideImage>
       <Flex

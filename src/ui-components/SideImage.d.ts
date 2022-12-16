@@ -8,7 +8,7 @@ import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type SideImageProps = React.PropsWithChildren<Partial<FlexProps> & {
-    imageType?: "automation" | "consulting" | "development";
+    imageName?: "automation" | "consulting" | "development";
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
