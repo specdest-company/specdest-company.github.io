@@ -1,47 +1,32 @@
 {
-  "name": "specdest",
-  "version": "1.0.0",
+  "name": "specdest-compnay.github.io",
   "private": true,
-  "homepage": "https://specdest.com",
-  "dependencies": {
-    "@aws-amplify/ui-react": "^4.0.3",
-    "@craco/craco": "7.0.0",
-    "aws-amplify": "^5.0.4",
-    "gh-pages": "4.0.0",
-    "prop-types": "15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-google-recaptcha-v3": "1.10.0",
-    "react-google-recaptcha3": "1.0.4",
-    "react-helmet": "6.1.0",
-    "react-router-dom": "6.4.3",
-    "react-router-hash-link": "2.4.3"
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": "18.x"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-pages -d build",
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test --env=jsdom",
-    "eject": "craco eject"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "engines": {
-    "node": "16.x"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@aws-amplify/ui-react": "4.2.1",
+    "aws-amplify": "5.0.7",
+    "gh-pages": "4.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-google-recaptcha3": "1.0.4",
+    "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1"
-  },
-  "packageManager": "yarn@3.3.0"
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9",
+    "@vitejs/plugin-react": "3.0.0",
+    "typescript": "4.9.3",
+    "vite": "4.0.0"
+  }
 }

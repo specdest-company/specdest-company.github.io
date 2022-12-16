@@ -85,7 +85,7 @@ export default function TopPage(props) {
       {...getOverrideProps(overrides, "TopPage")}
     >
       <TopNavBar
-        display="flex"
+        display="none"
         gap="20px"
         direction="row"
         width="unset"
