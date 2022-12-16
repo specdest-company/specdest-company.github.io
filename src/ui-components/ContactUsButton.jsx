@@ -41,7 +41,7 @@ export default function ContactUsButton(props) {
   );
   const contactUsButtonOnClick = useNavigateAction({
     type: "url",
-    url: '"/contact"',
+    url: "/contact",
   });
   return (
     <View

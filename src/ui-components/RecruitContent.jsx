@@ -116,7 +116,7 @@ export default function RecruitContent(props) {
       {...getOverrideProps(overrides, "RecruitContent")}
     >
       <TopNavBar
-        display="flex"
+        display="none"
         gap="20px"
         direction="row"
         width="unset"

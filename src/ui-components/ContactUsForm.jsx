@@ -8,7 +8,13 @@
 import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  TextAreaField,
+  TextField,
+} from "@aws-amplify/ui-react";
 export default function ContactUsForm(props) {
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
@@ -45,12 +51,12 @@ export default function ContactUsForm(props) {
   };
   const validations = {
     companyName: [],
-    companyUrl: [],
+    companyUrl: [{ type: "URL" }],
     department: [],
-    name: [],
+    name: [{ type: "Required" }],
     phoneNUmber: [{ type: "Phone" }],
-    email: [],
-    detail: [],
+    email: [{ type: "Required" }, { type: "Email" }],
+    detail: [{ type: "Required" }],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -188,6 +194,7 @@ export default function ContactUsForm(props) {
       ></TextField>
       <TextField
         label="お名前"
+        isRequired={true}
         placeholder="例）山田 太郎"
         onChange={(e) => {
           let { value } = e.target;
@@ -245,6 +252,7 @@ export default function ContactUsForm(props) {
       ></TextField>
       <TextField
         label="メールアドレス"
+        isRequired={true}
         placeholder="例）info@specdest.com"
         onChange={(e) => {
           let { value } = e.target;
@@ -271,8 +279,9 @@ export default function ContactUsForm(props) {
         hasError={errors.email?.hasError}
         {...getOverrideProps(overrides, "email")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="お問い合わせ内容"
+        isRequired={true}
         placeholder="聞きたいことや、相談したいことをご入力ください。"
         onChange={(e) => {
           let { value } = e.target;
@@ -298,7 +307,7 @@ export default function ContactUsForm(props) {
         errorMessage={errors.detail?.errorMessage}
         hasError={errors.detail?.hasError}
         {...getOverrideProps(overrides, "detail")}
-      ></TextField>
+      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

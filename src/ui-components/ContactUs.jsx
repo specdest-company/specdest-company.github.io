@@ -97,7 +97,7 @@ export default function ContactUs(props) {
       {...getOverrideProps(overrides, "ContactUs")}
     >
       <TopNavBar
-        display="flex"
+        display="none"
         gap="20px"
         direction="row"
         width="unset"

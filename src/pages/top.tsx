@@ -1,9 +1,15 @@
-import TopPage from '../ui-components/TopPage';
+import TopPageComponent from '../ui-components/TopPage';
 
-export default (props: any) => { 
-  return <TopPage width="100%" overrides={{
-      Services: {
-        id: "services"
-      },
-    }} />
-}
+const TopPage = () => {
+  return (
+    <TopPageComponent
+           width="100%"
+      overrides={{
+        Services: {
+          id: 'services',
+        },
+      }}
+    />
+  );
+};
+export default TopPage

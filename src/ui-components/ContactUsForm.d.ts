@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -39,7 +39,7 @@ export declare type ContactUsFormOverridesProps = {
     name?: FormProps<TextFieldProps>;
     phoneNUmber?: FormProps<TextFieldProps>;
     email?: FormProps<TextFieldProps>;
-    detail?: FormProps<TextFieldProps>;
+    detail?: FormProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
 export declare type ContactUsFormProps = React.PropsWithChildren<{
     overrides?: ContactUsFormOverridesProps | undefined | null;
