@@ -34,7 +34,7 @@ const ContactPage = () => {
         companyName: updatedFields.companyName,
         companyUrl: updatedFields.companyUrl,
         department: updatedFields.department,
-        phone: updatedFields.phoneNUmber,
+        phone: updatedFields.phoneNumber,
       });
     });
   };
