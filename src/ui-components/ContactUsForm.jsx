@@ -23,7 +23,7 @@ export default function ContactUsForm(props) {
     companyUrl: undefined,
     department: undefined,
     name: undefined,
-    phoneNUmber: undefined,
+    phoneNumber: undefined,
     email: undefined,
     detail: undefined,
   };
@@ -33,8 +33,8 @@ export default function ContactUsForm(props) {
   const [companyUrl, setCompanyUrl] = React.useState(initialValues.companyUrl);
   const [department, setDepartment] = React.useState(initialValues.department);
   const [name, setName] = React.useState(initialValues.name);
-  const [phoneNUmber, setPhoneNUmber] = React.useState(
-    initialValues.phoneNUmber
+  const [phoneNumber, setPhoneNumber] = React.useState(
+    initialValues.phoneNumber
   );
   const [email, setEmail] = React.useState(initialValues.email);
   const [detail, setDetail] = React.useState(initialValues.detail);
@@ -44,7 +44,7 @@ export default function ContactUsForm(props) {
     setCompanyUrl(initialValues.companyUrl);
     setDepartment(initialValues.department);
     setName(initialValues.name);
-    setPhoneNUmber(initialValues.phoneNUmber);
+    setPhoneNumber(initialValues.phoneNumber);
     setEmail(initialValues.email);
     setDetail(initialValues.detail);
     setErrors({});
@@ -54,7 +54,7 @@ export default function ContactUsForm(props) {
     companyUrl: [{ type: "URL" }],
     department: [],
     name: [{ type: "Required" }],
-    phoneNUmber: [{ type: "Phone" }],
+    phoneNumber: [{ type: "Phone" }],
     email: [{ type: "Required" }, { type: "Email" }],
     detail: [{ type: "Required" }],
   };
@@ -80,7 +80,7 @@ export default function ContactUsForm(props) {
           companyUrl,
           department,
           name,
-          phoneNUmber,
+          phoneNumber,
           email,
           detail,
         };
@@ -119,7 +119,7 @@ export default function ContactUsForm(props) {
               companyUrl,
               department,
               name,
-              phoneNUmber,
+              phoneNumber,
               email,
               detail,
             };
@@ -138,6 +138,7 @@ export default function ContactUsForm(props) {
       ></TextField>
       <TextField
         label="会社URL"
+        isRequired={false}
         placeholder="例）https://specdest.com"
         onChange={(e) => {
           let { value } = e.target;
@@ -147,7 +148,7 @@ export default function ContactUsForm(props) {
               companyUrl: value,
               department,
               name,
-              phoneNUmber,
+              phoneNumber,
               email,
               detail,
             };
@@ -175,7 +176,7 @@ export default function ContactUsForm(props) {
               companyUrl,
               department: value,
               name,
-              phoneNUmber,
+              phoneNumber,
               email,
               detail,
             };
@@ -193,7 +194,7 @@ export default function ContactUsForm(props) {
         {...getOverrideProps(overrides, "department")}
       ></TextField>
       <TextField
-        label="お名前"
+        label="お名前]"
         isRequired={true}
         placeholder="例）山田 太郎"
         onChange={(e) => {
@@ -204,7 +205,7 @@ export default function ContactUsForm(props) {
               companyUrl,
               department,
               name: value,
-              phoneNUmber,
+              phoneNumber,
               email,
               detail,
             };
@@ -233,22 +234,22 @@ export default function ContactUsForm(props) {
               companyUrl,
               department,
               name,
-              phoneNUmber: value,
+              phoneNumber: value,
               email,
               detail,
             };
             const result = onChange(modelFields);
-            value = result?.phoneNUmber ?? value;
+            value = result?.phoneNumber ?? value;
           }
-          if (errors.phoneNUmber?.hasError) {
-            runValidationTasks("phoneNUmber", value);
+          if (errors.phoneNumber?.hasError) {
+            runValidationTasks("phoneNumber", value);
           }
-          setPhoneNUmber(value);
+          setPhoneNumber(value);
         }}
-        onBlur={() => runValidationTasks("phoneNUmber", phoneNUmber)}
-        errorMessage={errors.phoneNUmber?.errorMessage}
-        hasError={errors.phoneNUmber?.hasError}
-        {...getOverrideProps(overrides, "phoneNUmber")}
+        onBlur={() => runValidationTasks("phoneNumber", phoneNumber)}
+        errorMessage={errors.phoneNumber?.errorMessage}
+        hasError={errors.phoneNumber?.hasError}
+        {...getOverrideProps(overrides, "phoneNumber")}
       ></TextField>
       <TextField
         label="メールアドレス"
@@ -262,7 +263,7 @@ export default function ContactUsForm(props) {
               companyUrl,
               department,
               name,
-              phoneNUmber,
+              phoneNumber,
               email: value,
               detail,
             };
@@ -291,7 +292,7 @@ export default function ContactUsForm(props) {
               companyUrl,
               department,
               name,
-              phoneNUmber,
+              phoneNumber,
               email,
               detail: value,
             };

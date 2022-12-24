@@ -20,8 +20,7 @@ export default function Footer(props) {
     {
       overrides: {
         Logo: {},
-        "\u3012106-0031, \u6771\u4EAC\u90FD\u6E2F\u533A4-11-2, 606 Tel: 080-8495-6224":
-          {},
+        Address: {},
         "Frame 6": {},
         Company: {},
         Home: {},
@@ -37,8 +36,7 @@ export default function Footer(props) {
     {
       overrides: {
         Logo: {},
-        "\u3012106-0031, \u6771\u4EAC\u90FD\u6E2F\u533A4-11-2, 606 Tel: 080-8495-6224":
-          {},
+        Address: { width: "unset" },
         "Frame 6": {},
         Company: {},
         Home: {},
@@ -121,7 +119,7 @@ export default function Footer(props) {
           direction="column"
           justifyContent="unset"
           letterSpacing="0px"
-          width="unset"
+          width="128px"
           height="unset"
           gap="unset"
           alignItems="unset"
@@ -129,11 +127,8 @@ export default function Footer(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="〒106-0031,&#xA;東京都港区4-11-2, 606&#xA;&#xA;Tel: 080-8495-6224"
-          {...getOverrideProps(
-            overrides,
-            "\u3012106-0031, \u6771\u4EAC\u90FD\u6E2F\u533A4-11-2, 606 Tel: 080-8495-6224"
-          )}
+          children="〒106-0031,&#xA;東京都港区4-11-2, 606&#xA;&#xA;Tel: 050-5896-5929"
+          {...getOverrideProps(overrides, "Address")}
         ></Text>
       </Flex>
       <Flex

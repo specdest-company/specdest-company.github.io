@@ -60,7 +60,6 @@ export default function SideImage(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="contain"
-        src=""
         {...getOverrideProps(overrides, "image")}
       ></Image>
     </Flex>

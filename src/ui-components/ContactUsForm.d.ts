@@ -17,7 +17,7 @@ export declare type ContactUsFormInputValues = {
     companyUrl?: string;
     department?: string;
     name?: string;
-    phoneNUmber?: string;
+    phoneNumber?: string;
     email?: string;
     detail?: string;
 };
@@ -26,7 +26,7 @@ export declare type ContactUsFormValidationValues = {
     companyUrl?: ValidationFunction<string>;
     department?: ValidationFunction<string>;
     name?: ValidationFunction<string>;
-    phoneNUmber?: ValidationFunction<string>;
+    phoneNumber?: ValidationFunction<string>;
     email?: ValidationFunction<string>;
     detail?: ValidationFunction<string>;
 };
@@ -37,7 +37,7 @@ export declare type ContactUsFormOverridesProps = {
     companyUrl?: FormProps<TextFieldProps>;
     department?: FormProps<TextFieldProps>;
     name?: FormProps<TextFieldProps>;
-    phoneNUmber?: FormProps<TextFieldProps>;
+    phoneNumber?: FormProps<TextFieldProps>;
     email?: FormProps<TextFieldProps>;
     detail?: FormProps<TextAreaFieldProps>;
 } & EscapeHatchProps;

@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "test",
+  "projectName": "specdestcompnaygithu",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
