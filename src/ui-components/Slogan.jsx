@@ -55,8 +55,8 @@ export default function Slogan(props) {
       position="relative"
       padding="34px 0px 34px 0px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Slogan")}
+      {...rest}
     >
       <Text
         fontFamily="Inter"

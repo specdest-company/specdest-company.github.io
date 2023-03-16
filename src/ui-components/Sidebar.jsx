@@ -23,8 +23,8 @@ export default function Sidebar(props) {
       position="relative"
       padding="31px 44px 31px 44px"
       backgroundColor="rgba(17,23,39,1)"
-      {...rest}
       {...getOverrideProps(overrides, "Sidebar")}
+      {...rest}
     >
       <Flex
         gap="10px"

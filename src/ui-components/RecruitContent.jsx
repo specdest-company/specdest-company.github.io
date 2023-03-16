@@ -112,8 +112,8 @@ export default function RecruitContent(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "RecruitContent")}
+      {...rest}
     >
       <TopNavBar
         display="none"

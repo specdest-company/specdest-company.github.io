@@ -7,9 +7,33 @@
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
+import { TopNavBarProps } from "./TopNavBar";
+import { HeroProps } from "./Hero";
+import { SloganProps } from "./Slogan";
+import { ServicesProps } from "./Services";
+import { DevelopmentProps } from "./Development";
+import { ConsultingProps } from "./Consulting";
+import { AutomationProps } from "./Automation";
+import { OurTechnologyProps } from "./OurTechnology";
+import { JoinUsProps } from "./JoinUs";
+import { FooterProps } from "./Footer";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type TopPageOverridesProps = {
+    TopPage?: PrimitiveOverrideProps<FlexProps>;
+    TopNavBar?: TopNavBarProps;
+    Hero?: HeroProps;
+    Slogan?: SloganProps;
+    Services?: ServicesProps;
+    Development?: DevelopmentProps;
+    Consulting?: ConsultingProps;
+    Automation?: AutomationProps;
+    OurTechnology?: OurTechnologyProps;
+    JoinUs?: JoinUsProps;
+    Footer?: FooterProps;
+} & EscapeHatchProps;
 export declare type TopPageProps = React.PropsWithChildren<Partial<FlexProps> & {
     breakpoint?: "base" | "medium";
 } & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: TopPageOverridesProps | undefined | null;
 }>;
 export default function TopPage(props: TopPageProps): React.ReactElement;

@@ -6,10 +6,18 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
+import { ServiceIconProps } from "./ServiceIcon";
+import { FlexProps, TextProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type ServiceCardOverridesProps = {
+    ServiceCard?: PrimitiveOverrideProps<FlexProps>;
+    ServiceIcon?: ServiceIconProps;
+    title?: PrimitiveOverrideProps<TextProps>;
+    detail?: PrimitiveOverrideProps<TextProps>;
+} & EscapeHatchProps;
 export declare type ServiceCardProps = React.PropsWithChildren<Partial<FlexProps> & {
     type?: "automation" | "consulting" | "development";
 } & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: ServiceCardOverridesProps | undefined | null;
 }>;
 export default function ServiceCard(props: ServiceCardProps): React.ReactElement;

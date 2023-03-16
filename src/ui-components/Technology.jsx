@@ -20,8 +20,8 @@ export default function Technology(props) {
       justifyContent="unset"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "Technology")}
+      {...rest}
     >
       <Text
         fontFamily="Inter"

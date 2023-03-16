@@ -85,8 +85,8 @@ export default function Automation(props) {
       position="relative"
       padding="39px 32px 39px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Automation")}
+      {...rest}
     >
       <SideImage
         display="flex"

@@ -56,8 +56,8 @@ export default function ContactUsButton(props) {
       onClick={() => {
         contactUsButtonOnClick();
       }}
-      {...rest}
       {...getOverrideProps(overrides, "ContactUsButton")}
+      {...rest}
     >
       <Flex
         gap="10px"

@@ -62,8 +62,8 @@ export default function OurTechnology(props) {
       position="relative"
       padding="43px 101px 43px 101px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "OurTechnology")}
+      {...rest}
     >
       <Text
         fontFamily="Inter"

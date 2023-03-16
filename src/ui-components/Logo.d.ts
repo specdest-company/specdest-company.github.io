@@ -6,8 +6,13 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ViewProps } from "@aws-amplify/ui-react";
+import { ImageProps, ViewProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type LogoOverridesProps = {
+    Logo?: PrimitiveOverrideProps<ViewProps>;
+    "logo 1"?: PrimitiveOverrideProps<ImageProps>;
+} & EscapeHatchProps;
 export declare type LogoProps = React.PropsWithChildren<Partial<ViewProps> & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: LogoOverridesProps | undefined | null;
 }>;
 export default function Logo(props: LogoProps): React.ReactElement;

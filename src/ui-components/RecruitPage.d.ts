@@ -6,10 +6,20 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
+import { FlexProps, ImageProps } from "@aws-amplify/ui-react";
+import { RecruitContentProps } from "./RecruitContent";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type RecruitPageOverridesProps = {
+    RecruitPage?: PrimitiveOverrideProps<FlexProps>;
+    RecruitContent?: RecruitContentProps;
+    RecruitBottom1?: PrimitiveOverrideProps<ImageProps>;
+    RecruitBottom2?: PrimitiveOverrideProps<ImageProps>;
+    RecruitLeft?: PrimitiveOverrideProps<ImageProps>;
+    RecruitRight?: PrimitiveOverrideProps<ImageProps>;
+} & EscapeHatchProps;
 export declare type RecruitPageProps = React.PropsWithChildren<Partial<FlexProps> & {
     breakpoint?: "base" | "medium";
 } & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: RecruitPageOverridesProps | undefined | null;
 }>;
 export default function RecruitPage(props: RecruitPageProps): React.ReactElement;

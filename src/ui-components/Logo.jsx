@@ -21,8 +21,8 @@ export default function Logo(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "Logo")}
+      {...rest}
     >
       <Image
         width="48px"

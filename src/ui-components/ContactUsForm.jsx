@@ -6,8 +6,6 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { fetchByPath, validateField } from "./utils";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Flex,
@@ -15,17 +13,18 @@ import {
   TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { fetchByPath, validateField } from "./utils";
 export default function ContactUsForm(props) {
-  const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
-    props;
+  const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
-    companyName: undefined,
-    companyUrl: undefined,
-    department: undefined,
-    name: undefined,
-    phoneNumber: undefined,
-    email: undefined,
-    detail: undefined,
+    companyName: "",
+    companyUrl: "",
+    department: "",
+    name: "",
+    phoneNumber: "",
+    email: "",
+    detail: "",
   };
   const [companyName, setCompanyName] = React.useState(
     initialValues.companyName
@@ -58,7 +57,15 @@ export default function ContactUsForm(props) {
     email: [{ type: "Required" }, { type: "Email" }],
     detail: [{ type: "Required" }],
   };
-  const runValidationTasks = async (fieldName, value) => {
+  const runValidationTasks = async (
+    fieldName,
+    currentValue,
+    getDisplayValue
+  ) => {
+    const value =
+      currentValue && getDisplayValue
+        ? getDisplayValue(currentValue)
+        : currentValue;
     let validationResponse = validateField(value, validations[fieldName]);
     const customValidator = fetchByPath(onValidate, fieldName);
     if (customValidator) {
@@ -105,12 +112,14 @@ export default function ContactUsForm(props) {
         }
         await onSubmit(modelFields);
       }}
-      {...rest}
       {...getOverrideProps(overrides, "ContactUsForm")}
+      {...rest}
     >
       <TextField
         label="会社名"
+        isRequired={false}
         placeholder="例）スペックデストカビ式会社式会社"
+        value={companyName}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -138,8 +147,8 @@ export default function ContactUsForm(props) {
       ></TextField>
       <TextField
         label="会社URL"
-        isRequired={false}
         placeholder="例）https://specdest.com"
+        value={companyUrl}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -168,6 +177,7 @@ export default function ContactUsForm(props) {
       <TextField
         label="役職（部署）"
         placeholder="例）営業部 部長"
+        value={department}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -194,9 +204,10 @@ export default function ContactUsForm(props) {
         {...getOverrideProps(overrides, "department")}
       ></TextField>
       <TextField
-        label="お名前]"
+        label="お名前"
         isRequired={true}
         placeholder="例）山田 太郎"
+        value={name}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -226,6 +237,7 @@ export default function ContactUsForm(props) {
         label="電話番号"
         placeholder="例）000-1234-5678"
         type="tel"
+        value={phoneNumber}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -255,6 +267,7 @@ export default function ContactUsForm(props) {
         label="メールアドレス"
         isRequired={true}
         placeholder="例）info@specdest.com"
+        value={email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {

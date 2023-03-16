@@ -93,8 +93,8 @@ export default function Consulting(props) {
       position="relative"
       padding="39px 32px 39px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Consulting")}
+      {...rest}
     >
       <SideImage
         display="flex"

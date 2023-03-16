@@ -79,8 +79,8 @@ export default function Footer(props) {
       position="relative"
       padding="32px 32px 32px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Footer")}
+      {...rest}
     >
       <Flex
         gap="30px"

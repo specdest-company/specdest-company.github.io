@@ -93,8 +93,8 @@ export default function ContactUs(props) {
       padding="0px 16px 0px 16px"
       backgroundColor="rgba(17,23,39,1)"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "ContactUs")}
+      {...rest}
     >
       <TopNavBar
         display="none"

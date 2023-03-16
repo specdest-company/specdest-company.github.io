@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import * as React from "react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -30,22 +30,21 @@ export declare type ContactUsFormValidationValues = {
     email?: ValidationFunction<string>;
     detail?: ValidationFunction<string>;
 };
-export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ContactUsFormOverridesProps = {
-    ContactUsFormGrid?: FormProps<GridProps>;
-    companyName?: FormProps<TextFieldProps>;
-    companyUrl?: FormProps<TextFieldProps>;
-    department?: FormProps<TextFieldProps>;
-    name?: FormProps<TextFieldProps>;
-    phoneNumber?: FormProps<TextFieldProps>;
-    email?: FormProps<TextFieldProps>;
-    detail?: FormProps<TextAreaFieldProps>;
+    ContactUsFormGrid?: PrimitiveOverrideProps<GridProps>;
+    companyName?: PrimitiveOverrideProps<TextFieldProps>;
+    companyUrl?: PrimitiveOverrideProps<TextFieldProps>;
+    department?: PrimitiveOverrideProps<TextFieldProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    phoneNumber?: PrimitiveOverrideProps<TextFieldProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
+    detail?: PrimitiveOverrideProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
 export declare type ContactUsFormProps = React.PropsWithChildren<{
     overrides?: ContactUsFormOverridesProps | undefined | null;
 } & {
     onSubmit: (fields: ContactUsFormInputValues) => void;
-    onCancel?: () => void;
     onChange?: (fields: ContactUsFormInputValues) => ContactUsFormInputValues;
     onValidate?: ContactUsFormValidationValues;
 } & React.CSSProperties>;

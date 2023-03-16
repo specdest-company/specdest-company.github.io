@@ -64,8 +64,8 @@ export default function RecruitPage(props) {
       padding="0px 100px 0px 100px"
       backgroundColor="rgba(17,23,39,1)"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "RecruitPage")}
+      {...rest}
     >
       <RecruitContent
         display="flex"

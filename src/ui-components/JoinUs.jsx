@@ -64,8 +64,8 @@ export default function JoinUs(props) {
       position="relative"
       padding="24px 24px 24px 24px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "JoinUs")}
+      {...rest}
     >
       <Flex
         gap="32px"

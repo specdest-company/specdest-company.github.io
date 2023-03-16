@@ -65,8 +65,8 @@ export default function ServiceCard(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "ServiceCard")}
+      {...rest}
     >
       <ServiceIcon
         width="128px"

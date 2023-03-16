@@ -87,8 +87,8 @@ export default function TopNavBar(props) {
       position="relative"
       padding="24px 32px 24px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "TopNavBar")}
+      {...rest}
     >
       <Logo
         width="48px"

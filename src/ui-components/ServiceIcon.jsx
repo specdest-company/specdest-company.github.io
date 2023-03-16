@@ -74,8 +74,8 @@ export default function ServiceIcon(props) {
           style: { transform: "translate(0%, 12.5%)" },
         },
       ]}
-      {...rest}
       {...getOverrideProps(overrides, "ServiceIcon")}
+      {...rest}
     ></Icon>
   );
 }

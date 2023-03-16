@@ -74,8 +74,8 @@ export default function Development(props) {
       position="relative"
       padding="32px 32px 32px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Development")}
+      {...rest}
     >
       <SideImage
         display="flex"

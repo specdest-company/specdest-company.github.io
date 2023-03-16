@@ -88,8 +88,8 @@ export default function Hero(props) {
       position="relative"
       padding="80px 32px 80px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Hero")}
+      {...rest}
     >
       <Flex
         gap="24px"

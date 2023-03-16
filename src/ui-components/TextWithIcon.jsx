@@ -20,8 +20,8 @@ export default function TextWithIcon(props) {
       alignItems="center"
       position="relative"
       padding="0px 0px 0px 0px"
-      {...rest}
       {...getOverrideProps(overrides, "TextWithIcon")}
+      {...rest}
     >
       <View
         width="24px"

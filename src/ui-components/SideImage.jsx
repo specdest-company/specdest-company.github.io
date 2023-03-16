@@ -43,8 +43,8 @@ export default function SideImage(props) {
       position="relative"
       padding="0px 0px 0px 0px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "SideImage")}
+      {...rest}
     >
       <Image
         width="unset"

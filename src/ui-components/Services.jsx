@@ -77,8 +77,8 @@ export default function Services(props) {
       position="relative"
       padding="35px 32px 35px 32px"
       display="flex"
-      {...rest}
       {...getOverrideProps(overrides, "Services")}
+      {...rest}
     >
       <Flex
         padding="0px 0px 0px 0px"

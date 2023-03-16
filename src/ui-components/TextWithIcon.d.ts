@@ -6,8 +6,15 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
+import { FlexProps, IconProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type TextWithIconOverridesProps = {
+    TextWithIcon?: PrimitiveOverrideProps<FlexProps>;
+    "material-symbols:check-circle"?: PrimitiveOverrideProps<ViewProps>;
+    Vector?: PrimitiveOverrideProps<IconProps>;
+    "Team of experts in software development"?: PrimitiveOverrideProps<TextProps>;
+} & EscapeHatchProps;
 export declare type TextWithIconProps = React.PropsWithChildren<Partial<FlexProps> & {
-    overrides?: EscapeHatchProps | undefined | null;
+    overrides?: TextWithIconOverridesProps | undefined | null;
 }>;
 export default function TextWithIcon(props: TextWithIconProps): React.ReactElement;
