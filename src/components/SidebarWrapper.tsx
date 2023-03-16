@@ -1,5 +1,5 @@
 import { SyntheticEvent } from 'react';
-import Sidebar from '../ui-components/Sidebar';
+import Sidebar from '../ui-components/SideBar';
 import styles from './SidebarWrapper.module.css';
 
 export const SidebarWrapper = ({

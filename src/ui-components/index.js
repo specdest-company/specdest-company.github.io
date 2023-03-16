@@ -15,7 +15,7 @@ export { default as ContactUsButton } from "./ContactUsButton";
 export { default as ServiceIcon } from "./ServiceIcon";
 export { default as RecruitPage } from "./RecruitPage";
 export { default as ServiceCard } from "./ServiceCard";
-export { default as Sidebar } from "./Sidebar";
+export { default as Sidebar } from "./SideBar";
 export { default as SideImage } from "./SideImage";
 export { default as Footer } from "./Footer";
 export { default as Slogan } from "./Slogan";
