@@ -1,55 +1,15 @@
-import TopPageComponent from '../ui-components/TopPage';
+import Hero from '@/components/home/hero';
+import Offers from '@/components/home/offers';
+import Service from '@/components/home/service';
 
-const TopPage = () => {
+export default function Home() {
   return (
-    <TopPageComponent
-      width="100%"
-      overrides={{
-        Services: {
-          id: 'services',
-        },
-        Development: {
-          overrides: {
-            SideImage: {
-              overrides: {
-                image: {
-                  src: '/assets/images/1.png',
-                },
-              },
-            },
-          },
-        },
-        Consulting: {
-          overrides: {
-            SideImage1: {
-              overrides: {
-                image: {
-                  src: '/assets/images/2.png',
-                },
-              },
-            },
-            SideImage2: {
-              overrides: {
-                image: {
-                  src: '/assets/images/2.png',
-                },
-              },
-            },
-          },
-        },
-        Automation: {
-          overrides: {
-            SideImage: {
-              overrides: {
-                image: {
-                  src: '/assets/images/3.png',
-                },
-              },
-            },
-          },
-        },
-      }}
-    />
+    <main>
+      <div className='bg-[url("/background_gradient.svg")] sm:bg-top bg-no-repeat bg-contain md:mt-[30px] mt-[50px] bg-[center_top_150px]'>
+        <Hero />
+        <Offers />
+        <Service />
+      </div>
+    </main>
   );
-};
-export default TopPage;
+}

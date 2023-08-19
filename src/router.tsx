@@ -1,35 +1,38 @@
-import { useState } from 'react';
-import studioTheme from './ui-components/studioTheme.js';
-import { ThemeProvider } from '@aws-amplify/ui-react';
-import { SidebarWrapper } from './components/SidebarWrapper';
-import { Outlet } from 'react-router-dom';
-import TopNavBar from './ui-components/TopNavBar';
+import ErrorPage from './error-page';
+import Root from './layout';
+import TopPage from './pages/top';
+import ContactPage from './pages/contact';
+import ContactSentPage from './pages/contact-sent';
+import { createBrowserRouter } from 'react-router-dom';
+import AboutUsPage from './pages/about';
+import ServicesPage from './pages/services';
 
-export default function Root() {
-  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
-  return (
-    <>
-      <ThemeProvider theme={studioTheme}>
-        <div
-          id="outer-container"
-          style={{
-            margin: 'auto',
-            maxWidth: 1200,
-          }}
-        >
-          <SidebarWrapper
-            isOpen={isSideMenuOpen}
-            onCloseClick={() => setIsSideMenuOpen(false)}
-          />
-          <TopNavBar
-            width="100%"
-            onHamburgerClick={() => {
-              setIsSideMenuOpen(true);
-            }}
-          />
-          <Outlet />
-        </div>
-      </ThemeProvider>
-    </>
-  );
-}
+export const router = createBrowserRouter([
+  {
+    element: <Root />,
+    // element: <App/>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <TopPage />,
+      },
+      {
+        path: '/services',
+        element: <ServicesPage />,
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />,
+      },
+      {
+        path: '/about',
+        element: <AboutUsPage />,
+      },
+      {
+        path: '/contact-sent',
+        element: <ContactSentPage />,
+      },
+    ],
+  },
+]);

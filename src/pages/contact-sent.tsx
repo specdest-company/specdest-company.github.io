@@ -1,7 +1,3 @@
-import { Link } from 'react-router-dom';
-// import { Helmet } from 'react-helmet'
-import './contact.css';
-
 const ContactSent = () => {
   return (
     <div className="contact-container">
@@ -22,9 +18,9 @@ const ContactSent = () => {
             お問い合わせ頂いた内容については、確認の上、ご返信させていただきます。
           </div>
           <br />
-          <Link to="/" className="home-navlink">
+          <a href="/" className="home-navlink">
             HOME
-          </Link>
+          </a>
         </div>
       </div>
       {/* <Footer></Footer> */}

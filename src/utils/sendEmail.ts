@@ -1,4 +1,4 @@
-export type ContactDetails = {
+export interface ContactDetails {
   recapchaToken: string;
   customerName: string;
   emailAddress: string;
@@ -7,7 +7,7 @@ export type ContactDetails = {
   companyUrl?: string;
   department?: string;
   phone?: string;
-};
+}
 
 export const sendEmail = async (contactDetail: ContactDetails) => {
   const myHeaders = new Headers();
