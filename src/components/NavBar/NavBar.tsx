@@ -5,6 +5,7 @@ import { LanguageContext } from '@/utils/language';
 // import Image from "next/image";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { Link } from 'react-router-dom';
 
 const useChangeLanguage = () => {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -67,7 +68,7 @@ const Navbar = () => {
     <header ref={navbar} className="h-[80px] bg-primary">
       <div className="container m-auto">
         <nav className="nav md:px-0 px-[20px]">
-          <a href={'/'}>
+          <Link to={'/'}>
             <img
               className="md:w-[43px] w-[63px]"
               src="/logo_specdest_wire.svg"
@@ -75,7 +76,7 @@ const Navbar = () => {
               height={63}
               alt="logo"
             />
-          </a>
+          </Link>
           <div
             onClick={() => {
               setNavActive(!navActive);
@@ -94,7 +95,7 @@ const Navbar = () => {
                 setNavActive(!navActive);
               }}
               className="border-b-[1px] border-primary/30 pb-[21px] md:hidden block">
-              <a href={'/'}>
+              <Link to={'/'}>
                 <img
                   src="/left_arrow.svg"
                   className="ml-[15px]"
@@ -102,7 +103,7 @@ const Navbar = () => {
                   height={34}
                   alt="logo"
                 />
-              </a>
+              </Link>
             </div>
             {MENU_LIST.map((menu, idx) => (
               <div
@@ -122,7 +123,7 @@ const Navbar = () => {
                     setNavActive(false);
                   }}
                   className=" nav__item text-primary ">
-                  <a href={'./contact'}>Contact us</a>
+                  <Link to={'./contact'}>Contact us</Link>
                 </button>
               </div>
               <div className="my_hr md:hidden block" />

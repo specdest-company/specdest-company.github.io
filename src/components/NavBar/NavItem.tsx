@@ -1,4 +1,4 @@
-// import Link from "next/link";
+import { Link } from 'react-router-dom';
 
 const NavItem = ({
   text,
@@ -10,9 +10,9 @@ const NavItem = ({
   active: boolean;
 }) => {
   return (
-    <a href={href}>
+    <Link to={href}>
       <p className={`ml-[30px] nav__item ${active ? 'active' : ''}`}>{text}</p>
-    </a>
+    </Link>
   );
 };
 

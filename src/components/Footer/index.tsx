@@ -1,6 +1,7 @@
 // import Image from "next/image";
 // import Link from "next/link";
 import { FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const handleSubmit = async (event: FormEvent) => {
@@ -28,7 +29,7 @@ const Footer = () => {
           <div className="grid grid-cols-12 mb-[54px]">
             <div className="md:col-span-5 col-span-12 mb-[42px]">
               <div className="mb-[25px]">
-                <a href={'/'}>
+                <Link to={'/'}>
                   <img
                     className="md:w-[75px] w-[64px]"
                     src="/logo_specdest_filled.svg"
@@ -36,7 +37,7 @@ const Footer = () => {
                     height={75}
                     alt="logo"
                   />
-                </a>
+                </Link>
               </div>
 
               <p className="md:mb-[25px] mb-2 font-[600]">
@@ -68,12 +69,12 @@ const Footer = () => {
                 Specdest
               </p>
               <div className="lg:text-start gap-[12px]">
-                <a href={'/about'}>
+                <Link to={'/about'}>
                   <p className="mb-[12px]">About us</p>
-                </a>
-                <a href={'/contact'}>
+                </Link>
+                <Link to={'/contact'}>
                   <p className="mb-[12px]">Contact Us</p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="lg:text-start md:col-span-4 md:col-end-13 col-span-6 md:ml-7">
@@ -81,12 +82,12 @@ const Footer = () => {
                 Our Services
               </p>
               <div className="lg:text-start">
-                <a href={'/services'}>
+                <Link to={'/services'}>
                   <p className="mb-[12px]">Web development</p>
-                </a>
-                <a href={'/services'}>
+                </Link>
+                <Link to={'/services'}>
                   <p className="mb-[12px]">Mobile app development</p>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { hero } from '@/locales/home';
 import { LanguageContext } from '@/utils/language';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const container = useRef(null);
@@ -54,14 +55,14 @@ const Hero = () => {
             className="xl:text-[1.5rem] lg:text-[1.25rem] md:text-[1.0625rem] text-[0.875rem] font-normal text-[#000425]/80 md:mb-[23px] mb-[48px]">
             {heroInCurrentLanguage.sub_title}
           </p>
-          <a
+          <Link
+            to="/contact"
             ref={button}
-            href="/contact"
             className="md:w-[380px] sm:w-[70%] w-[70%] h-[50px] p-4 bg-primary justify-center items-center  inline-flex">
             <div className="text-white md:text-[1rem] text-[0.875rem] font-bold">
               Discover the Possibilities
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

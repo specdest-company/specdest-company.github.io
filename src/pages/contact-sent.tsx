@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const ContactSent = () => {
   return (
     <div className="container m-auto">
@@ -21,11 +23,11 @@ const ContactSent = () => {
               お問い合わせ頂いた内容については、確認の上、ご返信させていただきます。
             </p>
             <br />
-            <a
-              href="/"
+            <Link
+              to="/"
               className="xl:text-[1.5rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-bold text-primary">
               トップページに戻る
-            </a>
+            </Link>
           </div>
         </div>
       </div>
