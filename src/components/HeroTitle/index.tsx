@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HeroTitle = ({ sub_title, title, desc }: any) => {
   return (
     <div className="text-center mt-[80px]">

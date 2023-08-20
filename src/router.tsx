@@ -3,11 +3,11 @@ import Root from './layout';
 import TopPage from './pages/top';
 import ContactPage from './pages/contact';
 import ContactSentPage from './pages/contact-sent';
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import AboutUsPage from './pages/about';
 import ServicesPage from './pages/services';
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     element: <Root />,
     // element: <App/>,

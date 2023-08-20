@@ -1,12 +1,9 @@
-'use client';
-
 // // import Image from "next/image";
 import { service_data } from '@/locales/home';
-import React, { useEffect, useRef } from 'react';
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/all";
-
-const service = service_data;
+import { LanguageContext } from '@/utils/language';
+import { useContext, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const Service = () => {
   const container = useRef(null);
@@ -15,44 +12,49 @@ const Service = () => {
   const items2 = useRef(null);
   const items3 = useRef(null);
 
-  //   useEffect(() => {
-  //     gsap.registerPlugin(ScrollTrigger);
+  const { language } = useContext(LanguageContext);
 
-  //     ScrollTrigger.matchMedia({
-  //       // desktop
-  //       "(min-width: 768px)": function () {
-  //         const tl = gsap.timeline({
-  //           scrollTrigger: {
-  //             trigger: container.current,
-  //             start: "0% 80%",
-  //             end: "100% 80%",
-  //             scrub: true,
-  //             markers: false,
-  //           },
-  //         });
-  //         tl.from(title.current, { y: 100, opacity: 0 });
-  //         tl.from(items1.current, { x: -800, opacity: 0 });
-  //         tl.from(items2.current, { x: 800, opacity: 0 });
-  //         tl.from(items3.current, { x: -800, opacity: 0 });
-  //       },
+  const service = service_data[language];
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  //       // mobile
-  //       "(max-width: 767px)": function () {},
+    ScrollTrigger.matchMedia({
+      // desktop
+      '(min-width: 768px)': function () {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container.current,
+            start: '0% 80%',
+            end: '100% 80%',
+            scrub: true,
+            markers: false,
+          },
+        });
+        tl.from(title.current, { y: 100, opacity: 0 });
+        tl.from(items1.current, { x: -800, opacity: 0 });
+        tl.from(items2.current, { x: 800, opacity: 0 });
+        tl.from(items3.current, { x: -800, opacity: 0 });
+      },
 
-  //       // all
-  //       all: function () {},
-  //     });
-  //   }, []);
+      // mobile
+      '(max-width: 767px)': function () {
+        // do nothing
+      },
+
+      // all
+      all: function () {
+        // do nothing
+      },
+    });
+  }, []);
   return (
     <div
       ref={container}
-      className="container m-auto flex justify-center mb-[230px] overflow-hidden"
-    >
+      className="container m-auto flex justify-center mb-[230px] overflow-hidden">
       <div className="flex flex-col items-center mb-40px lg:mb-100px">
         <div
           ref={items1}
-          className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]"
-        >
+          className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]">
           <div className="w-full flex flex-row-reverse justify-between items-center">
             <div className="flex items-center lg:justify-end md:justify-center">
               <img
@@ -91,8 +93,7 @@ const Service = () => {
 
         <div
           ref={items2}
-          className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]"
-        >
+          className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]">
           <div className="w-full flex flex-row justify-between items-center">
             <div className="flex items-center lg:justify-end md:justify-center">
               <img

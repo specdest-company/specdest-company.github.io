@@ -1,67 +1,5 @@
-// import './contact.css';
-// import { useEffect } from 'react';
-// import { ContactUs, ContactUsForm } from '../ui-components';
-// import { ContactUsFormInputValues } from '../ui-components/ContactUsForm';
-// import { sendEmail } from '../utils/sendEmail';
-// import { useReCaptcha } from '../utils/useRecaptcha';
-
-// const ContactPage = () => {
-//   // load google recaptcha3 script
-//   const recaptcha = useReCaptcha();
-//   useEffect(() => {
-//     recaptcha.load();
-//   }, []);
-//   const onSubmit = (fields: ContactUsFormInputValues) => {
-//     // Example function to trim all string inputs
-//     const updatedFields: ContactUsFormInputValues = {};
-//     (Object.keys(fields) as Array<keyof typeof fields>).forEach((key) => {
-//       const value = fields[key];
-//       if (typeof value === 'string') {
-//         updatedFields[key] = value.trim();
-//       } else {
-//         updatedFields[key] = value;
-//       }
-//     });
-
-//     recaptcha.execute({ action: 'click' }).then(async (token) => {
-//       // TODO token を用いた処理
-//       // return updatedFields
-//       await sendEmail({
-//         recapchaToken: token,
-//         customerName: updatedFields.name || '',
-//         emailAddress: updatedFields.email || '',
-//         message: updatedFields.detail || '',
-//         companyName: updatedFields.companyName,
-//         companyUrl: updatedFields.companyUrl,
-//         department: updatedFields.department,
-//         phone: updatedFields.phoneNumber,
-//       });
-//     });
-//   };
-//   return (
-//     <ContactUs
-//       overrides={{
-//         PolicyTextWrapper: {
-//           overflow: 'scroll',
-//         },
-//       }}
-//       width="100%"
-//       form={
-//         <ContactUsForm
-//           overrides={{
-//             ContactUsForm: {
-//               style: {
-//                 alignSelf: 'stretch',
-//               },
-//             },
-//           }}
-//           onSubmit={onSubmit}
-//         />
-//       }
-//     />
-//   );
-// };
-'use client';
+import { sendEmail } from '../utils/sendEmail';
+import { useReCaptcha } from '../utils/useRecaptcha';
 
 import ContactCard from '@/components/ContactCard/ContactCard';
 import HeroTitle from '@/components/HeroTitle';
@@ -71,15 +9,21 @@ import {
   form_fields,
   contact_hero_data,
 } from '@/locales/contacts';
-import { debugLog } from '@/utils/logger';
-import { FormEvent } from 'react';
+import { LanguageContext } from '@/utils/language';
+import { debugLog, sendErrorMessage, sendlogMessage } from '@/utils/logger';
+import { FormEvent, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// Get Form field information from locales folder dynamically
-const formFields = form_fields;
-const cardData = contact_card_data;
-const heroData = contact_hero_data;
+// // Get Form field information from locales folder dynamically
 
 const Contact = () => {
+  const recaptcha = useReCaptcha();
+  const navigate = useNavigate();
+
+  const { language } = useContext(LanguageContext);
+  const formFields = form_fields[language];
+  const cardData = contact_card_data[language];
+  const heroData = contact_hero_data[language];
   const handleSubmit = (event: FormEvent) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault();
@@ -88,7 +32,7 @@ const Contact = () => {
     const form = event.target as HTMLFormElement;
 
     // Get data from the form.
-    const data = {};
+    const data: Record<string, unknown> = {};
 
     formFields.forEach((field) => {
       const objKey = field.name;
@@ -98,8 +42,43 @@ const Contact = () => {
       Object.assign(data, pair);
     });
 
-    // Console data
     debugLog('Form data: ', data);
+    recaptcha
+      .execute({ action: 'click' })
+      .then(async (token: string) => {
+        // TODO token を用いた処理
+        // return updatedFields
+        // await sendEmail({
+        //   recapchaToken: token,
+        //   customerName: updatedFields.name || '',
+        //   emailAddress: updatedFields.email || '',
+        //   message: updatedFields.detail || '',
+        //   companyName: updatedFields.companyName,
+        //   companyUrl: updatedFields.companyUrl,
+        //   department: updatedFields.department,
+        //   phone: updatedFields.phoneNumber,
+        // });
+        try {
+          const res = await sendEmail({
+            updatedFields: {
+              recapchaToken: token,
+              ...data,
+            },
+          });
+          if (res.status === 200) {
+            sendlogMessage('Your message has been successfully submitted.');
+
+            navigate('/contact-sent');
+          } else {
+            sendErrorMessage('Something went wrong, please try again.', res);
+          }
+        } catch (err) {
+          sendErrorMessage('Something went wrong, please try again.', err);
+        }
+      })
+      .catch((err) => {
+        sendErrorMessage('Error: ', err);
+      });
   };
 
   return (
@@ -114,8 +93,7 @@ const Contact = () => {
 
           <form
             className="flex flex-col pt-10 max-w-[800px] mx-auto"
-            onSubmit={handleSubmit}
-          >
+            onSubmit={handleSubmit}>
             {formFields.map((field, idx) => (
               <InputField
                 key={idx}
@@ -129,8 +107,7 @@ const Contact = () => {
 
             <button
               className="bg-primary p-4 text-white md:w-[343px] w-full h-[55px] font-bold mt-10 mx-auto"
-              type="submit"
-            >
+              type="submit">
               Send
             </button>
           </form>

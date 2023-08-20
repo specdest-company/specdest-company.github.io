@@ -1,8 +1,6 @@
-'use client';
-
 // import Image from "next/image";
 // import Link from "next/link";
-import React, { FormEvent } from 'react';
+import { FormEvent } from 'react';
 
 const Footer = () => {
   const handleSubmit = async (event: FormEvent) => {
@@ -57,8 +55,7 @@ const Footer = () => {
                     />
                     <button
                       type="submit"
-                      className="absolute right-0 top-0 bottom-0 rounded-r-[10px] bg-white text-primary px-[16px] text-[14px] font-semibold"
-                    >
+                      className="absolute right-0 top-0 bottom-0 rounded-r-[10px] bg-white text-primary px-[16px] text-[14px] font-semibold">
                       Email Me!
                     </button>
                   </label>

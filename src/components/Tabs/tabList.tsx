@@ -1,8 +1,12 @@
-// import Image from "next/image";
-// import Link from "next/link";
-import React from 'react';
-
-const TabList = ({ title, description, imgUrl }: any) => {
+const TabList = ({
+  title,
+  description,
+  imgUrl,
+}: {
+  title: string;
+  description: string;
+  imgUrl: string;
+}) => {
   return (
     <div className="md:my-[88px] my-[20px]">
       <h1 className="xl:text-[3rem] lg:text-[2.25rem] md:text-[1.75rem] text-[1.25rem] font-bold">

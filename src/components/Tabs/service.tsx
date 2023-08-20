@@ -1,14 +1,13 @@
-'use client';
-
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
 import Tabs from '.';
 import TabList from './tabList';
 import { web_service_data, mobile_service_data } from '@/locales/service';
-
-const webData = web_service_data;
-const mobileData = mobile_service_data;
+import { LanguageContext } from '@/utils/language';
 
 const TabService = () => {
+  const { language } = useContext(LanguageContext);
+  const webData = web_service_data[language];
+  const mobileData = mobile_service_data[language];
   const [activeTab, setActiveTab] = useState('Web Development');
   return (
     <div className="lg:mb-[200px] md:mb-[150px] mb-[100px]">

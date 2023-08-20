@@ -1,51 +1,55 @@
-'use client';
-
 // import Image from "next/image";
-import React, { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { offers } from '@/locales/home';
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/all";
+import { LanguageContext } from '@/utils/language';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const Offers = () => {
   const container = useRef(null);
   const title = useRef(null);
   const items = useRef(null);
 
-  // useEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
+  const { language } = useContext(LanguageContext);
+  const offersInCurrentLanguage = offers[language];
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  //   ScrollTrigger.matchMedia({
-  //     // desktop
-  //     "(min-width: 768px)": function () {
-  //       const tl = gsap.timeline({
-  //         scrollTrigger: {
-  //           trigger: title.current,
-  //           start: "35% 75%",
-  //           end: "bottom 40%",
-  //           scrub: true,
-  //           markers: false,
-  //         },
-  //       });
+    ScrollTrigger.matchMedia({
+      // desktop
+      '(min-width: 768px)': function () {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: title.current,
+            start: '35% 75%',
+            end: 'bottom 40%',
+            scrub: true,
+            markers: false,
+          },
+        });
 
-  //       tl.from(title.current, { y: 100, opacity: 0 });
-  //       tl.from(items.current, { y: 100, opacity: 0 });
-  //     },
+        tl.from(title.current, { y: 100, opacity: 0 });
+        tl.from(items.current, { y: 100, opacity: 0 });
+      },
 
-  //     // mobile
-  //     "(max-width: 767px)": function () {},
+      // mobile
+      '(max-width: 767px)': function () {
+        // do nothing
+      },
 
-  //     // all
-  //     all: function () {},
-  //   });
-  // }, []);
+      // all
+      all: function () {
+        // do nothing
+      },
+    });
+  }, []);
 
   return (
     <div ref={container}>
       <div className="container m-auto text-center flex justify-center mt-[-50px] mb-[44px]">
         <h2
           ref={title}
-          className="2xl:w-[60%] xl:w-[50%] lg:w-[55%] md:w-[60%] w-[80%] xl:text-[2rem] lg:text-[1.625rem] md:text-[1.25rem] text-[1.125rem] font-[700] mb-2 md:leading-[43.20px] leading-snug"
-        >
+          className="2xl:w-[60%] xl:w-[50%] lg:w-[55%] md:w-[60%] w-[80%] xl:text-[2rem] lg:text-[1.625rem] md:text-[1.25rem] text-[1.125rem] font-[700] mb-2 md:leading-[43.20px] leading-snug">
           Tell us what you imagine and we will make them into
           <span className="text-primary"> REALITY</span>
         </h2>
@@ -53,10 +57,9 @@ const Offers = () => {
 
       <div
         ref={items}
-        className="herman container m-auto md:mb-[150px] mb-[100px]"
-      >
+        className="herman container m-auto md:mb-[150px] mb-[100px]">
         <div className="grid lg:grid-cols-3 md:gap-20 gap-16 text-center 2xl:px-[100px] px-0 ">
-          {offers.map((data, idx) => {
+          {offersInCurrentLanguage.map((data, idx) => {
             return (
               <div key={idx} className="flex flex-col items-center">
                 <img
