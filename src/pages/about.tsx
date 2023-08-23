@@ -1,7 +1,11 @@
 import Article from '@/components/Article/Article';
 import HeroTitle from '@/components/HeroTitle';
-import UserCard from '@/components/UserCard/UserCard';
-import { article_about, team_data, about_hero_data } from '@/locales/about';
+// import UserCard from '@/components/UserCard/UserCard';
+import {
+  article_about,
+  // team_data,
+  about_hero_data,
+} from '@/locales/about';
 import { LanguageContext } from '@/utils/language';
 import { useContext } from 'react';
 
@@ -10,7 +14,7 @@ const data = about_hero_data;
 export default function AboutUsPage() {
   const { language } = useContext(LanguageContext);
   const dataInCurrentLanguage = data[language];
-  const teamDataInCurrentLanguage = team_data[language];
+  // const teamDataInCurrentLanguage = team_data[language];
   const articleAboutInCurrentLanguage = article_about[language];
   return (
     <div className="container m-auto">

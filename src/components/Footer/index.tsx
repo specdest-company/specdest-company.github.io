@@ -38,7 +38,7 @@ const Footer = () => {
                 </Link>
               </div>
 
-              {/* <p className="md:mb-[25px] mb-2 font-[600]">
+              <p className="md:mb-[25px] mb-2 font-[600]">
                 Get the lastes Updates
               </p>
 
@@ -59,7 +59,7 @@ const Footer = () => {
                     </button>
                   </label>
                 </form>
-              </div> */}
+              </div>
             </div>
 
             <div className="lg:text-start md:col-span-2 col-span-6 md:ml-7">

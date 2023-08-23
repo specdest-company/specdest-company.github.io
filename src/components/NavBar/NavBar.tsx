@@ -34,35 +34,35 @@ const Navbar = () => {
   const navbar = useRef(null);
 
   const { language, handleChangeLanguage } = useChangeLanguage();
-  // useEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-  //   ScrollTrigger.matchMedia({
-  //     // desktop
-  //     '(min-width: 768px)': function () {
-  //       gsap.defaults({ duration: 3 });
-  //       const tl = gsap.timeline();
-  //       tl.from(navbar.current, { opacity: 0, y: -50, duration: 0.8 });
-  //       // .to(
-  //       //   navbar.current,
-  //       //   {
-  //       //     opacity: 1,
-  //       //     y: 0,
-  //       //     duration: 0,
-  //       //   },
-  //       // );
-  //     },
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.matchMedia({
+      // desktop
+      '(min-width: 768px)': function () {
+        gsap.defaults({ duration: 3 });
+        const tl = gsap.timeline();
+        tl.from(navbar.current, { opacity: 0, y: -50, duration: 0.8 });
+        // .to(
+        //   navbar.current,
+        //   {
+        //     opacity: 1,
+        //     y: 0,
+        //     duration: 0,
+        //   },
+        // );
+      },
 
-  //     // mobile
-  //     '(max-width: 767px)': function () {
-  //       // do nothing
-  //     },
+      // mobile
+      '(max-width: 767px)': function () {
+        // do nothing
+      },
 
-  //     // all
-  //     all: function () {
-  //       // do nothing
-  //     },
-  //   });
-  // }, []);
+      // all
+      all: function () {
+        // do nothing
+      },
+    });
+  }, []);
 
   return (
     <header ref={navbar} className="h-[80px] bg-primary">
