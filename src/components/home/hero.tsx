@@ -13,31 +13,28 @@ const Hero = () => {
 
   const { language } = useContext(LanguageContext);
   const heroInCurrentLanguage = hero[language];
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.matchMedia({
-      // desktop
-      '(min-width: 768px)': function () {
-        gsap.defaults({ duration: 0.3 });
-        const tl = gsap.timeline();
-        tl.from(container.current, { opacity: 0 })
-          // .to(container.current, {
-          //   opacity: 1,
-          // })
-          .from(title.current, { x: -100, opacity: 0 })
-          .from(sub_title.current, { x: 100, opacity: 0 })
-          .from(button.current, { opacity: 0 });
-      },
-      // mobile
-      '(max-width: 767px)': function () {
-        // do nothing
-      },
-      // all
-      all: function () {
-        // do nothing
-      },
-    });
-  }, []);
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
+  //   ScrollTrigger.matchMedia({
+  //     // desktop
+  //     '(min-width: 768px)': function () {
+  //       gsap.defaults({ duration: 0.3 });
+  //       const tl = gsap.timeline();
+  //       tl.from(container.current, { opacity: 0 })
+  //         .from(title.current, { x: -100, opacity: 0 })
+  //         .from(sub_title.current, { x: 100, opacity: 0 })
+  //         .from(button.current, { opacity: 0 });
+  //     },
+  //     // mobile
+  //     '(max-width: 767px)': function () {
+  //       // do nothing
+  //     },
+  //     // all
+  //     all: function () {
+  //       // do nothing
+  //     },
+  //   });
+  // }, []);
 
   return (
     <div

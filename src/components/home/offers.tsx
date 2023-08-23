@@ -12,37 +12,37 @@ const Offers = () => {
 
   const { language } = useContext(LanguageContext);
   const offersInCurrentLanguage = offers[language];
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    ScrollTrigger.matchMedia({
-      // desktop
-      '(min-width: 768px)': function () {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: title.current,
-            start: '35% 75%',
-            end: 'bottom 40%',
-            scrub: true,
-            markers: false,
-          },
-        });
+  //   ScrollTrigger.matchMedia({
+  //     // desktop
+  //     '(min-width: 768px)': function () {
+  //       const tl = gsap.timeline({
+  //         scrollTrigger: {
+  //           trigger: title.current,
+  //           start: '35% 75%',
+  //           end: 'bottom 40%',
+  //           scrub: true,
+  //           markers: false,
+  //         },
+  //       });
 
-        tl.from(title.current, { y: 100, opacity: 0 });
-        tl.from(items.current, { y: 100, opacity: 0 });
-      },
+  //       tl.from(title.current, { y: 100, opacity: 0 });
+  //       tl.from(items.current, { y: 100, opacity: 0 });
+  //     },
 
-      // mobile
-      '(max-width: 767px)': function () {
-        // do nothing
-      },
+  //     // mobile
+  //     '(max-width: 767px)': function () {
+  //       // do nothing
+  //     },
 
-      // all
-      all: function () {
-        // do nothing
-      },
-    });
-  }, []);
+  //     // all
+  //     all: function () {
+  //       // do nothing
+  //     },
+  //   });
+  // }, []);
 
   return (
     <div ref={container}>

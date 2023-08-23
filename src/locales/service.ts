@@ -1,6 +1,6 @@
 export const service_hero_data = {
   en: {
-    title: 'We Give Solution & Happiness',
+    title: 'We Give Solution & Simplicty',
     sub_title: 'OUR SERVICES',
     description:
       'Unlocking the Power of Connectivity: Elevating Businesses through Expert Mobile App and Web Development Services.',
@@ -9,7 +9,7 @@ export const service_hero_data = {
     title: 'We Give Solution & Happiness',
     sub_title: 'OUR SERVICES',
     description:
-      'Unlocking the Power of Connectivity: Elevating Businesses through Expert Mobile App and Web Development Services.',
+      'ニーズに合わせたカスタマイズされたソリューションで、ビジネスを向上させます。',
   },
 };
 

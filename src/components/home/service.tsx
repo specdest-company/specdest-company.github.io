@@ -15,38 +15,38 @@ const Service = () => {
   const { language } = useContext(LanguageContext);
 
   const service = service_data[language];
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    ScrollTrigger.matchMedia({
-      // desktop
-      '(min-width: 768px)': function () {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: container.current,
-            start: '0% 80%',
-            end: '100% 80%',
-            scrub: true,
-            markers: false,
-          },
-        });
-        tl.from(title.current, { y: 100, opacity: 0 });
-        tl.from(items1.current, { x: -800, opacity: 0 });
-        tl.from(items2.current, { x: 800, opacity: 0 });
-        tl.from(items3.current, { x: -800, opacity: 0 });
-      },
+  //   ScrollTrigger.matchMedia({
+  //     // desktop
+  //     '(min-width: 768px)': function () {
+  //       const tl = gsap.timeline({
+  //         scrollTrigger: {
+  //           trigger: container.current,
+  //           start: '0% 80%',
+  //           end: '100% 80%',
+  //           scrub: true,
+  //           markers: false,
+  //         },
+  //       });
+  //       tl.from(title.current, { y: 100, opacity: 0 });
+  //       tl.from(items1.current, { x: -800, opacity: 0 });
+  //       tl.from(items2.current, { x: 800, opacity: 0 });
+  //       tl.from(items3.current, { x: -800, opacity: 0 });
+  //     },
 
-      // mobile
-      '(max-width: 767px)': function () {
-        // do nothing
-      },
+  //     // mobile
+  //     '(max-width: 767px)': function () {
+  //       // do nothing
+  //     },
 
-      // all
-      all: function () {
-        // do nothing
-      },
-    });
-  }, []);
+  //     // all
+  //     all: function () {
+  //       // do nothing
+  //     },
+  //   });
+  // }, []);
   return (
     <div
       ref={container}

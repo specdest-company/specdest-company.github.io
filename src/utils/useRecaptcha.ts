@@ -44,7 +44,6 @@ export function useReCaptcha(): UseReCaptcha {
       // `window.___grecaptcha_cfg.fns` にコールバック関数を push しておくと reCAPTCHA が ready 状態になった時に呼び出してくれる
       // See: https://developers.google.com/recaptcha/docs/loading#loading_recaptcha_asynchronously
       if (typeof window.grecaptcha?.ready === 'undefined') {
-        // @ts-ignore
         window.grecaptcha = window.grecaptcha || {};
         window.grecaptcha.ready = (cb: () => void) => {
           // @ts-ignore

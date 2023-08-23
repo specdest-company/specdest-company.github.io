@@ -1,5 +1,3 @@
-// import Image from "next/image";
-// import Link from "next/link";
 import { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -40,7 +38,7 @@ const Footer = () => {
                 </Link>
               </div>
 
-              <p className="md:mb-[25px] mb-2 font-[600]">
+              {/* <p className="md:mb-[25px] mb-2 font-[600]">
                 Get the lastes Updates
               </p>
 
@@ -61,7 +59,7 @@ const Footer = () => {
                     </button>
                   </label>
                 </form>
-              </div>
+              </div> */}
             </div>
 
             <div className="lg:text-start md:col-span-2 col-span-6 md:ml-7">
@@ -77,7 +75,7 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div className="lg:text-start md:col-span-4 md:col-end-13 col-span-6 md:ml-7">
+            {/* <div className="lg:text-start md:col-span-4 md:col-end-13 col-span-6 md:ml-7">
               <p className="text-[18px] font-bold md:mb-[24px] mb-[12px]">
                 Our Services
               </p>
@@ -89,14 +87,14 @@ const Footer = () => {
                   <p className="mb-[12px]">Mobile app development</p>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex justify-between gap-10">
             <p className="md:text-[20px] text-[14px] md:w-full w-[180px] text-white/60">
               Copyright © 2022 Spedcest . All Rights Reseved.
             </p>
-            <div className="flex gap-[14px]">
+            {/* <div className="flex gap-[14px]">
               <img
                 className="md:w-[24px] w-[20px]"
                 src="/social_linkedin.svg"
@@ -118,7 +116,7 @@ const Footer = () => {
                 height={25}
                 alt="social"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

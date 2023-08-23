@@ -23,12 +23,12 @@ export default function AboutUsPage() {
 
         <Article articleBody={articleAboutInCurrentLanguage} />
 
-        <div className="xl:text-[1.5rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-bold text-primary mx-auto mt-20 text-center">
+        {/* <div className="xl:text-[1.5rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-bold text-primary mx-auto mt-20 text-center">
           OUR TEAM
         </div>
         <div className="flex justify-between py-4">
           {teamDataInCurrentLanguage.map((member) => UserCard(member))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
