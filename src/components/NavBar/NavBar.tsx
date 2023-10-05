@@ -1,32 +1,25 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-// import Link from "next/link";
 import NavItem from './NavItem';
 import { LanguageContext } from '@/utils/language';
-// import Image from "next/image";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const useChangeLanguage = () => {
   const { language, setLanguage } = useContext(LanguageContext);
-  // const {
-  //   i18n: { changeLanguage, language },
-  // } = useTranslation();
-  // const [currentLanguage, setCurrentLanguage] = useState(language);
+
   const handleChangeLanguage = () => {
     const newLanguage = language === 'en' ? 'ja' : 'en';
     setLanguage(newLanguage);
   };
+
   return {
     language,
     handleChangeLanguage,
   };
 };
 
-const MENU_LIST = [
-  { text: 'About us', href: '/about' },
-  // { text: 'Our services', href: '/services' },
-];
+const MENU_LIST = [{ text: 'About us', href: '/about' }];
+
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
@@ -34,38 +27,18 @@ const Navbar = () => {
   const navbar = useRef(null);
 
   const { language, handleChangeLanguage } = useChangeLanguage();
+
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.matchMedia({
-      // desktop
-      '(min-width: 768px)': function () {
-        gsap.defaults({ duration: 3 });
-        const tl = gsap.timeline();
-        tl.from(navbar.current, { opacity: 0, y: -50, duration: 0.8 });
-        // .to(
-        //   navbar.current,
-        //   {
-        //     opacity: 1,
-        //     y: 0,
-        //     duration: 0,
-        //   },
-        // );
-      },
-
-      // mobile
-      '(max-width: 767px)': function () {
-        // do nothing
-      },
-
-      // all
-      all: function () {
-        // do nothing
-      },
-    });
+    // ScrollTrigger is not needed with Framer Motion
   }, []);
 
   return (
-    <header ref={navbar} className="h-[80px] bg-primary">
+    <motion.div
+      ref={navbar}
+      className="h-[80px] bg-primary"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}>
       <div className="container m-auto">
         <nav className="nav md:px-0 px-[20px]">
           <Link to={'/'}>
@@ -86,10 +59,14 @@ const Navbar = () => {
             <div></div>
             <div></div>
           </div>
-          <div
+          <motion.div
             className={`${
               navActive ? 'active' : ''
-            } nav__menu-list md:text-white text-black`}>
+            } nav__menu-list md:text-white text-black`}
+            animate={{
+              height: navActive ? '100%' : 0,
+            }}
+            transition={{ duration: 0.5 }}>
             <div
               onClick={() => {
                 setNavActive(!navActive);
@@ -118,13 +95,13 @@ const Navbar = () => {
             ))}
             <div>
               <div className="ml-[30px] md:px-[20px] px-[0] sm:py-[8px] bg-white">
-                <button
+                <motion.button
                   onClick={() => {
                     setNavActive(false);
                   }}
                   className=" nav__item text-primary ">
                   <Link to={'./contact'}>Contact us</Link>
-                </button>
+                </motion.button>
               </div>
               <div className="my_hr md:hidden block" />
             </div>
@@ -149,11 +126,10 @@ const Navbar = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </nav>
       </div>
-    </header>
+    </motion.div>
   );
 };
-
 export default Navbar;

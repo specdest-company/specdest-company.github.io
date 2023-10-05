@@ -1,66 +1,45 @@
 // // import Image from "next/image";
 import { service_data } from '@/locales/home';
 import { LanguageContext } from '@/utils/language';
-import {
-  useContext,
-  //  useEffect,
-  useRef,
-} from 'react';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/all';
+import { Variants, motion } from 'framer-motion';
+import { useContext, useRef } from 'react';
+import { FadeInWhenVisible } from './FadeInWhenVisible';
+
+const cardVariants: Variants = {
+  offscreen: {
+    x: -300,
+  },
+  onscreen: {
+    x: 0,
+    // rotate: -10,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
 
 const Service = () => {
   const container = useRef(null);
-  // const title = useRef(null);
-  const items1 = useRef(null);
   const items2 = useRef(null);
   const items3 = useRef(null);
 
   const { language } = useContext(LanguageContext);
 
   const service = service_data[language];
-  // useEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
 
-  //   ScrollTrigger.matchMedia({
-  //     // desktop
-  //     '(min-width: 768px)': function () {
-  //       const tl = gsap.timeline({
-  //         scrollTrigger: {
-  //           trigger: container.current,
-  //           start: '-80% 20%',
-  //           end: '100% 20%',
-  //           scrub: true,
-  //           markers: false,
-  //         },
-  //       });
-  //       tl.from(title.current, { y: 100, opacity: 0 });
-  //       tl.from(items1.current, { x: -800, opacity: 0 });
-  //       tl.from(items2.current, { x: 800, opacity: 0 });
-  //       tl.from(items3.current, { x: -800, opacity: 0 });
-  //     },
-
-  //     // mobile
-  //     '(max-width: 767px)': function () {
-  //       // do nothing
-  //     },
-
-  //     // all
-  //     all: function () {
-  //       // do nothing
-  //     },
-  //   });
-  // }, []);
   return (
     <div
       ref={container}
       className="container m-auto flex justify-center mb-[230px] overflow-hidden">
       <div className="flex flex-col items-center mb-40px lg:mb-100px">
-        <div
-          ref={items1}
-          className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]">
+        <div className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]">
           <div className="w-full flex flex-row-reverse justify-between items-center">
-            <div className="flex items-center lg:justify-end md:justify-center">
+            <FadeInWhenVisible
+              initialStyle={{ y: 100, opacity: 0 }}
+              delay={0.5}
+              className="flex items-center lg:justify-end md:justify-center">
               <img
                 alt="service"
                 src="/home_square_solutions.svg"
@@ -68,8 +47,11 @@ const Service = () => {
                 width={400}
                 height={400}
               />
-            </div>
-            <div className="w-full md:w-7/12">
+            </FadeInWhenVisible>
+            <FadeInWhenVisible
+              initialStyle={{ y: 10 }}
+              delay={0.5}
+              className="w-full md:w-7/12">
               <h4 className="mt-3 2xl:text-[2.375rem] xl:text-[2rem] lg:text-[1.75rem] md:text-[1.5rem] text-[1.25rem] font-[700] lg:leading-[43.20px]">
                 {service.title_1}
               </h4>
@@ -91,7 +73,7 @@ const Service = () => {
               <p className="2xl:text-[1.5rem] xl:text-[1.375rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-TTCommons">
                 {service.sub_text_1}
               </p>
-            </div>
+            </FadeInWhenVisible>
           </div>
         </div>
 
@@ -99,7 +81,9 @@ const Service = () => {
           ref={items2}
           className="2xl:mb-[250px] xl:mb-[200px] lg:mb-[150px] md:mb-[125px] mb-[95px]">
           <div className="w-full flex flex-row justify-between items-center">
-            <div className="flex items-center lg:justify-end md:justify-center">
+            <FadeInWhenVisible
+              initialStyle={{ x: -300 }}
+              className="flex items-center lg:justify-end md:justify-center">
               <img
                 alt="service"
                 src="/home_square_services.svg"
@@ -107,8 +91,10 @@ const Service = () => {
                 width={10}
                 height={10}
               />
-            </div>
-            <div className="w-full md:w-7/12">
+            </FadeInWhenVisible>
+            <FadeInWhenVisible
+              initialStyle={{ x: 300 }}
+              className="w-full md:w-7/12">
               <h4 className="mt-3 2xl:text-[2.375rem] xl:text-[2rem] lg:text-[1.75rem] md:text-[1.5rem] text-[1.25rem] font-[700] lg:leading-[43.20px]">
                 {service.title_2}
               </h4>
@@ -130,13 +116,15 @@ const Service = () => {
               <p className="2xl:text-[1.5rem] xl:text-[1.375rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-TTCommons">
                 {service.sub_text_2}
               </p>
-            </div>
+            </FadeInWhenVisible>
           </div>
         </div>
 
         <div ref={items3}>
           <div className="w-full flex flex-row-reverse justify-between items-center">
-            <div className="flex items-center lg:justify-end md:justify-center">
+            <FadeInWhenVisible
+              initialStyle={{ x: 300 }}
+              className="flex items-center lg:justify-end md:justify-center">
               <img
                 alt="service"
                 src="/home_square_automation.svg"
@@ -144,8 +132,10 @@ const Service = () => {
                 width={400}
                 height={400}
               />
-            </div>
-            <div className="w-full md:w-7/12">
+            </FadeInWhenVisible>
+            <FadeInWhenVisible
+              initialStyle={{ x: -300 }}
+              className="w-full md:w-7/12">
               <h4 className="mt-3 2xl:text-[2.375rem] xl:text-[2rem] lg:text-[1.75rem] md:text-[1.5rem] text-[1.25rem] font-[700] lg:leading-[43.20px]">
                 {service.title_3}
               </h4>
@@ -167,7 +157,7 @@ const Service = () => {
               <p className="2xl:text-[1.5rem] xl:text-[1.375rem] lg:text-[1.25rem] md:text-[1.125rem] text-[1rem] font-TTCommons">
                 {service.sub_text_3}
               </p>
-            </div>
+            </FadeInWhenVisible>
           </div>
         </div>
       </div>

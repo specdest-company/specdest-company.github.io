@@ -21,8 +21,8 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc.cjs"
   },
   "dependencies": {
+    "framer-motion": "^10.16.4",
     "gh-pages": "6.0.0",
-    "gsap": "3.12.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-recaptcha-v3": "^1.10.1",
@@ -37,7 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "@vitejs/plugin-react": "^4.0.4",
-    "autoprefixer": "^10.4.15",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.0",
@@ -47,7 +47,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "husky": "^8.0.3",
-    "postcss": "^8.4.28",
+    "postcss": "^8.4.31",
     "prettier": "^3.0.2",
     "rollup-plugin-visualizer": "^5.9.2",
     "tailwindcss": "^3.3.3",
