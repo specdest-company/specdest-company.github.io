@@ -62,7 +62,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="lg:text-start md:col-span-2 col-span-6 md:ml-7">
+            <div className="lg:text-start  col-span-6 md:ml-7">
               <p className="text-[18px] font-bold md:mb-[24px] mb-[12px]">
                 Specdest
               </p>
@@ -72,6 +72,9 @@ const Footer = () => {
                 </Link>
                 <Link to={'/contact'}>
                   <p className="mb-[12px]">Contact Us</p>
+                </Link>
+                <Link to={'/deal'}>
+                  <p className="mb-[12px]">特定商取引法に基づく表示</p>
                 </Link>
               </div>
             </div>

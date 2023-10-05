@@ -1,7 +1,6 @@
 import { useRef, useContext } from 'react';
 import { offers } from '@/locales/home';
 import { LanguageContext } from '@/utils/language';
-import { motion } from 'framer-motion';
 import { FadeInWhenVisible } from './FadeInWhenVisible';
 
 const cardInitialStyle = {

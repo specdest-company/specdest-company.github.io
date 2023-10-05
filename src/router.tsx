@@ -5,6 +5,7 @@ import ContactPage from './pages/contact';
 import ContactSentPage from './pages/contact-sent';
 import { createHashRouter } from 'react-router-dom';
 import AboutUsPage from './pages/about';
+import DealPage from './pages/deal';
 import ServicesPage from './pages/services';
 
 export const router = createHashRouter([
@@ -28,6 +29,10 @@ export const router = createHashRouter([
       {
         path: '/about',
         element: <AboutUsPage />,
+      },
+      {
+        path: '/deal',
+        element: <DealPage />,
       },
       {
         path: '/contact-sent',

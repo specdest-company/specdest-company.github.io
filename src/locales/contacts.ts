@@ -135,7 +135,7 @@ export const contact_card_data = {
     {
       image: '/contact_visit_us.svg',
       title: 'Visit us:',
-      info: 'Tokyo, Minato, Nishiazabu 4-11-2 606',
+      info: 'Tokyo, Minato, Aoyama 3-1-36 6F',
     },
   ],
   ja: [
@@ -152,7 +152,7 @@ export const contact_card_data = {
     {
       image: '/contact_visit_us.svg',
       title: 'Visit us:',
-      info: '東京都港区西麻布4-11-2 606',
+      info: '東京都港区南青山3丁目1番36号青山丸竹ビル6F',
     },
   ],
 };

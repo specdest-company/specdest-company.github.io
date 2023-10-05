@@ -1,24 +1,7 @@
-// // import Image from "next/image";
 import { service_data } from '@/locales/home';
 import { LanguageContext } from '@/utils/language';
-import { Variants, motion } from 'framer-motion';
 import { useContext, useRef } from 'react';
 import { FadeInWhenVisible } from './FadeInWhenVisible';
-
-const cardVariants: Variants = {
-  offscreen: {
-    x: -300,
-  },
-  onscreen: {
-    x: 0,
-    // rotate: -10,
-    transition: {
-      type: 'spring',
-      bounce: 0.4,
-      duration: 0.8,
-    },
-  },
-};
 
 const Service = () => {
   const container = useRef(null);
@@ -38,7 +21,7 @@ const Service = () => {
           <div className="w-full flex flex-row-reverse justify-between items-center">
             <FadeInWhenVisible
               initialStyle={{ y: 100, opacity: 0 }}
-              delay={0.5}
+              transition={{ delay: 0.3, duration: 0.3 }}
               className="flex items-center lg:justify-end md:justify-center">
               <img
                 alt="service"
@@ -50,7 +33,7 @@ const Service = () => {
             </FadeInWhenVisible>
             <FadeInWhenVisible
               initialStyle={{ y: 10 }}
-              delay={0.5}
+              transition={{ delay: 0.6, duration: 0.1 }}
               className="w-full md:w-7/12">
               <h4 className="mt-3 2xl:text-[2.375rem] xl:text-[2rem] lg:text-[1.75rem] md:text-[1.5rem] text-[1.25rem] font-[700] lg:leading-[43.20px]">
                 {service.title_1}
