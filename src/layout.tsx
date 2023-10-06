@@ -39,6 +39,8 @@ import Navbar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer';
 
 // const nunito = Nunito_Sans({ subsets: ['latin'] });
+import { ThemeProvider, useTheme } from '@/components/theme-provider';
+import { useEffect } from 'react';
 
 export const metadata = {
   title: 'Specdest',
@@ -46,13 +48,19 @@ export const metadata = {
 };
 
 export default function Root() {
+  const { setTheme } = useTheme();
+  useEffect(() => {
+    setTheme('light');
+  }, [setTheme]);
   return (
     <div>
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </div>
   );
 }

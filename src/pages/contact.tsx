@@ -1,9 +1,20 @@
 import { sendEmail } from '../utils/sendEmail';
 import { useReCaptcha } from '../utils/useRecaptcha';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
 
 import ContactCard from '@/components/ContactCard/ContactCard';
 import HeroTitle from '@/components/HeroTitle';
-import InputField from '@/components/InputField/InputField';
 import {
   contact_card_data,
   form_fields,
@@ -11,10 +22,26 @@ import {
 } from '@/locales/contacts';
 import { LanguageContext } from '@/utils/language';
 import { debugLog, sendErrorMessage, sendlogMessage } from '@/utils/logger';
-import { FormEvent, useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
-// // Get Form field information from locales folder dynamically
+const FormSchema = z.object({
+  companyName: z.string(),
+  companyUrl: z.union([z.literal(''), z.string().trim().url()]),
+  position: z.string(),
+  customerName: z.string().min(1, {
+    message: '入力してください',
+  }),
+  phoneNumber: z.string(),
+  emailAddress: z.string().email().min(5, {
+    message: 'メールアドレスを入力してください',
+  }),
+  message: z.string().min(2, {
+    message: 'メッセージを入力してください',
+  }),
+});
 
 const Contact = () => {
   const recaptcha = useReCaptcha();
@@ -22,42 +49,28 @@ const Contact = () => {
 
   const { language } = useContext(LanguageContext);
   const formFields = form_fields[language];
+
   const cardData = contact_card_data[language];
   const heroData = contact_hero_data[language];
-  const handleSubmit = (event: FormEvent) => {
-    // Stop the form from submitting and refreshing the page.
-    event.preventDefault();
 
-    // Cast the event target to an html form
-    const form = event.target as HTMLFormElement;
+  const form = useForm({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      companyName: '',
+      companyUrl: '',
+      position: '',
+      customerName: '',
+      phoneNumber: '',
+      emailAddress: '',
+      message: '',
+    },
+  });
 
-    // Get data from the form.
-    const data: Record<string, unknown> = {};
-
-    formFields.forEach((field) => {
-      const objKey = field.name;
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      const ovjValue = form[objKey].value as string;
-      const pair = { [objKey]: ovjValue };
-      Object.assign(data, pair);
-    });
-
+  const handleSubmit = (data: z.infer<typeof FormSchema>) => {
     debugLog('Form data: ', data);
     recaptcha
       .execute({ action: 'click' })
       .then(async (token: string) => {
-        // TODO token を用いた処理
-        // return updatedFields
-        // await sendEmail({
-        //   recapchaToken: token,
-        //   customerName: updatedFields.name || '',
-        //   emailAddress: updatedFields.email || '',
-        //   message: updatedFields.detail || '',
-        //   companyName: updatedFields.companyName,
-        //   companyUrl: updatedFields.companyUrl,
-        //   department: updatedFields.department,
-        //   phone: updatedFields.phoneNumber,
-        // });
         try {
           const res = await sendEmail({
             updatedFields: {
@@ -81,6 +94,10 @@ const Contact = () => {
       });
   };
 
+  useEffect(() => {
+    recaptcha.load();
+  }, [recaptcha]);
+
   return (
     <div className="tile">
       <div className="container m-auto">
@@ -90,28 +107,163 @@ const Contact = () => {
             title={heroData.title}
             desc={heroData.description}
           />
+          <Form {...form}>
+            <form
+              className="flex flex-col pt-10 max-w-[800px] mx-auto gap-8"
+              onSubmit={form.handleSubmit(handleSubmit)}>
+              <FormField
+                control={form.control}
+                name="companyName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.companyName.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.companyName.placeholder}
+                        required={formFields.companyName.required}
+                        {...field}
+                      />
+                    </FormControl>
 
-          <form
-            className="flex flex-col pt-10 max-w-[800px] mx-auto"
-            onSubmit={handleSubmit}>
-            {formFields.map((field, idx) => (
-              <InputField
-                key={idx}
-                label={field.label}
-                name={field.name}
-                type={field.type}
-                placeholder={field.placeholder}
-                required={field.required}
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            ))}
+              <FormField
+                control={form.control}
+                name="companyUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.companyUrl.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.companyUrl.placeholder}
+                        required={formFields.companyUrl.required}
+                        {...field}
+                      />
+                    </FormControl>
 
-            <button
-              className="bg-primary p-4 text-white md:w-[343px] w-full h-[55px] font-bold mt-10 mx-auto"
-              type="submit">
-              Send
-            </button>
-          </form>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="position"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.position.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.position.placeholder}
+                        required={formFields.position.required}
+                        {...field}
+                      />
+                    </FormControl>
 
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="customerName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.customerName.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.customerName.placeholder}
+                        required={formFields.customerName.required}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="phoneNumber"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.phoneNumber.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.phoneNumber.placeholder}
+                        required={formFields.phoneNumber.required}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="emailAddress"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.emailAddress.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="h-12"
+                        placeholder={formFields.emailAddress.placeholder}
+                        required={formFields.emailAddress.required}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold text-lg text-primary">
+                      {formFields.message.label}
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder={formFields.message.placeholder}
+                        required={formFields.message.required}
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <button
+                className="bg-primary p-4 text-white md:w-[343px] w-full h-[55px] font-bold mt-10 mx-auto"
+                type="submit">
+                Send
+              </button>
+            </form>
+          </Form>
           <div className="2xl:text-[1.5rem] xl:text-[1.375rem] lg:text-[1.25rem] md:text-[1.125rem] font-bold text-primary mx-auto mt-20 text-center">
             OUR CONTACTS
           </div>

@@ -23,12 +23,12 @@ export function isContactDetails(data: any): data is ContactDetails {
 }
 
 if (
-  !import.meta.env.VITE_RECAPCHA_SITE_KEY ||
-  typeof import.meta.env.VITE_RECAPCHA_SITE_KEY !== 'string'
+  !import.meta.env.VITE_WEB3FORMS_TOKEN ||
+  typeof import.meta.env.VITE_WEB3FORMS_TOKEN !== 'string'
 ) {
-  throw new Error('VITE_RECAPCHA_SITE_KEY is not defined');
+  throw new Error('VITE_WEB3FORMS_TOKEN is not defined');
 }
-const web3formsToken = import.meta.env.VITE_RECAPCHA_SITE_KEY;
+const web3formsToken = import.meta.env.VITE_WEB3FORMS_TOKEN;
 
 export const sendEmail = async ({
   updatedFields,

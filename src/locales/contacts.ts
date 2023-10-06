@@ -14,110 +14,94 @@ export const contact_hero_data = {
 };
 
 export const form_fields = {
-  en: [
-    {
+  en: {
+    companyName: {
       label: 'Company Name',
-      name: 'companyName',
       type: 'text',
       placeholder: 'Input company name here...',
       required: false,
     },
-    {
+    companyUrl: {
       label: 'Company web site URL',
-      name: 'companyUrl',
       type: 'text',
       placeholder: 'https://specdest.com',
       required: false,
     },
-    {
+    position: {
       label: 'Position (Department)',
-      name: 'position',
       type: 'text',
       placeholder: 'Enter your Position (Department)',
       required: false,
     },
-    {
+    customerName: {
       label: 'Full Name',
-      name: 'customerName',
       type: 'text',
       placeholder: 'Enter your full name...',
       required: true,
     },
-    {
+    phoneNumber: {
       label: 'Phone Number',
-      name: 'phone',
       type: 'tel',
-      // pattern="[0-9]{3}-[0-9]{8}",
       placeholder: '123-12345678',
       required: false,
     },
-    {
+    emailAddress: {
       label: 'E-Mail',
-      name: 'emailAddress',
       type: 'email',
       placeholder: 'Enter your email...',
       required: true,
     },
-    {
+    message: {
       label: 'Message',
-      name: 'message',
       type: 'textarea',
       placeholder: 'Enter your message here...',
       required: true,
     },
-  ],
-  ja: [
-    {
+  },
+  ja: {
+    companyName: {
       label: '会社名',
-      name: 'companyName',
       type: 'text',
       placeholder: '会社名を入力してください...',
       required: false,
     },
-    {
+    companyUrl: {
       label: '会社のURL',
-      name: 'companyUrl',
       type: 'text',
       placeholder: 'https://specdest.com',
       required: false,
     },
-    {
+    position: {
       label: '役職（部署）',
-      name: 'position',
       type: 'text',
       placeholder: '役職を入力してください...',
       required: false,
     },
-    {
+    customerName: {
       label: '氏名',
-      name: 'fullName',
       type: 'text',
       placeholder: '氏名を入力してください...',
       required: true,
     },
-    {
+    phoneNumber: {
       label: '電話番号',
-      name: 'phoneNumber',
       type: 'tel',
-      // pattern="[0-9]{3}-[0-9]{8}",
       placeholder: '電話番号を入力してください...',
       required: false,
     },
-    {
+    emailAddress: {
       label: 'メールアドレス',
-      name: 'email',
       type: 'email',
       placeholder: 'メールアドレスを入力してください...',
       required: true,
     },
-    {
+    message: {
       label: 'メッセージ',
-      name: 'message',
       type: 'textarea',
       placeholder: 'メッセージを入力してください...',
       required: true,
     },
-  ],
+  },
 };
 
 export const contact_card_data = {

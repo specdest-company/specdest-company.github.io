@@ -43,9 +43,9 @@ const Deal = () => {
   return (
     <div className="container m-auto">
       <div className="max-w-[880px] mx-auto pb-40">
-        <header className="flex items-center h-20 text-xl font-bold my-24">
+        <div className="flex items-center h-20 text-xl font-bold my-24">
           <h1>特定商取引法に基づく表示</h1>
-        </header>
+        </div>
 
         {data.map((item, idx) => {
           return (
